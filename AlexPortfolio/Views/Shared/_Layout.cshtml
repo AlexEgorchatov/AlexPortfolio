@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav nav-pills">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="/Home/About">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Experience and Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-link" href="#">Projects and Hobbies</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="navbar-link" href="/Home/Contact">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="footer">
+            <p><small>Copyright &copy; Alex Roch, @DateTime.Now.Year</small></p>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
