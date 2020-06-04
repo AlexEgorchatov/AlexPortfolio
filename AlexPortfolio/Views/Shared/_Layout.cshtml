@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model AlexPortfolio.Models.MasterViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,18 +21,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav nav-pills">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="/Home/About">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Experience and Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-link" href="#">Projects and Hobbies</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="navbar-link" href="/Home/Contact">Contact Me</a>
-                    </li>
+                    @foreach (var item in Model.Menu)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>@item.Title</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

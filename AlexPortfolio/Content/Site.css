@@ -30,3 +30,7 @@ textarea {
     width: 100%;
     text-align: center;
 }
+
+.nav-link.selected {
+    background-color:darkgray !important;
+}
