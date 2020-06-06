@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -37,7 +37,7 @@
                     @foreach (var item in Model.Menu)
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href><span class="@item.Icon"></span>&nbsp;<span class="menu-link-title">@item.Title</span></a>
+                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href data-toggle="tooltip" data-placement="bottom" title=@item.Title><span class="@item.Icon"></span>&nbsp;<span class="menu-link-title">@item.Title</span></a>
                         </li>
                     }
                 </ul>
@@ -65,8 +65,29 @@
         </div>
     </div>
 
+    <div id="login-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/portfolio")
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

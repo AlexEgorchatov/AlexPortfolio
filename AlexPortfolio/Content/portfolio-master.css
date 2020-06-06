@@ -59,3 +59,7 @@ textarea {
     margin-top: 14px;
     margin-right: 10px;
 }
+
+.tooltip-inner {
+    background-color: red;
+}
