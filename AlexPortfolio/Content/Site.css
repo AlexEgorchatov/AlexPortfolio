@@ -32,5 +32,30 @@ textarea {
 }
 
 .nav-link.selected {
-    background-color:darkgray !important;
+    background-color: black !important;
+}
+
+@media (min-width: 768px) {
+    .login-link-collapse {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-link-expand {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .menu-link-title {
+        display: none;
+    }
+}
+
+.login-link {
+    position: relative;
+    float: right;
+    margin-top: 14px;
+    margin-right: 10px;
 }

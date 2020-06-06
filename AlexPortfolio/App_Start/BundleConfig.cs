@@ -24,6 +24,7 @@ namespace AlexPortfolio
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/font-awesome.css",
                       "~/Content/Site.css"));
         }
     }

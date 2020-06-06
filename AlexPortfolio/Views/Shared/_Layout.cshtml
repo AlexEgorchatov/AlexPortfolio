@@ -18,16 +18,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                @if (Model.IsAuthorized)
+                {
+                    <div class="login-link login-link-collapse">
+                        <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="login-link login-link-collapse">
+                        <a href="#"><span class="fa fa-sign-in fa-fw fa-lg">&nbsp;</span>Log In</a>&nbsp;
+                        <a href="#"><span class="fa fa-user-plus fa-fw">&nbsp;</span>Sign Up</a>
+                    </div>
+                }
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav nav-pills">
+                <ul class="nav navbar-nav">
                     @foreach (var item in Model.Menu)
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>@item.Title</a>
+                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href><span class="@item.Icon"></span>&nbsp;<span class="menu-link-title">@item.Title</span></a>
                         </li>
                     }
                 </ul>
+                @if (Model.IsAuthorized)
+                {
+                    <div class="login-link login-link-expand">
+                        <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="login-link login-link-expand">
+                        <a href="#"><span class="fa fa-sign-in fa-fw fa-lg"></span>&nbsp;Log In</a>&nbsp;
+                        <a href="#"><span class="fa fa-user-plus fa-fw"></span>&nbsp;Sign Up</a>
+                    </div>
+                }
             </div>
         </div>
     </div>

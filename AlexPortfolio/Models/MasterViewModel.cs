@@ -21,13 +21,13 @@ namespace AlexPortfolio.Models
             User = user;
             Menu = new List<MenuItemViewModel>()
             {
-                new MenuItemViewModel(MenuType.Index, "/Home", "Home", false),
-                new MenuItemViewModel(MenuType.About, "/Home/About", "About Me", false),
-                new MenuItemViewModel(MenuType.Work, "#", "Work Experience", false),
-                new MenuItemViewModel(MenuType.Education, "#", "Education", false),
-                new MenuItemViewModel(MenuType.Projects, "#", "Projects", false),
-                new MenuItemViewModel(MenuType.Hobbies, "#", "Hobbies", false),
-                new MenuItemViewModel(MenuType.Contact, "/Home/Contact", "Contact Me", false),
+                new MenuItemViewModel(MenuType.Index),
+                new MenuItemViewModel(MenuType.About),
+                new MenuItemViewModel(MenuType.Work),
+                new MenuItemViewModel(MenuType.Education),
+                new MenuItemViewModel(MenuType.Projects),
+                new MenuItemViewModel(MenuType.Hobbies),
+                new MenuItemViewModel(MenuType.Contact),
             };
 
             Menu.First(i => i.MenuType == menuType).IsSelected = true;
