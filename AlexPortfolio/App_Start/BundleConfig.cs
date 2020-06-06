@@ -14,8 +14,8 @@ namespace AlexPortfolio
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css",
                 "~/Content/font-awesome.css",
+                "~/Content/bootstrap.css",
                 "~/Content/portfolio-master.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -25,6 +25,7 @@ namespace AlexPortfolio
                 "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                "~/Scripts/popper.min.js",
                 "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/portfolio").Include(

@@ -1,3 +1,3 @@
-﻿$(".login-link").click(() => {
-    $('#login-modal').modal("show");
+﻿$(() => {
+    $('[data-toggle="tooltip"]').tooltip();
 });

@@ -10,34 +10,33 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @if (Model.IsAuthorized)
-                {
-                    <div class="login-link login-link-collapse">
-                        <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
-                    </div>
-                }
-                else
-                {
-                    <div class="login-link login-link-collapse">
-                        <a href="#"><span class="fa fa-sign-in fa-fw fa-lg">&nbsp;</span>Log In</a>&nbsp;
-                        <a href="#"><span class="fa fa-user-plus fa-fw">&nbsp;</span>Sign Up</a>
-                    </div>
-                }
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+    <div class="container">
+        <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @if (Model.IsAuthorized)
+            {
+                <div class="login-link login-link-collapse">
+                    <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
+                </div>
+            }
+            else
+            {
+                <div class="login-link login-link-collapse">
+                    <a href="#"><span class="fa fa-sign-in fa-fw fa-lg">&nbsp;</span>Log In</a>&nbsp;
+                    <a href="#"><span class="fa fa-user-plus fa-fw">&nbsp;</span>Sign Up</a>
+                </div>
+            }
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
                     @foreach (var item in Model.Menu)
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href data-toggle="tooltip" data-placement="bottom" title=@item.Title><span class="@item.Icon"></span>&nbsp;<span class="menu-link-title">@item.Title</span></a>
+                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>
+                                <span class="@item.Icon" data-toggle="tooltip" data-placement="bottom" title=@item.Title></span>&nbsp;
+                                <span class="menu-link-title">@item.Title</span>
+                            </a>
                         </li>
                     }
                 </ul>
@@ -49,13 +48,13 @@
                 }
                 else
                 {
-                    <div class="login-link login-link-expand">
+                    <div class="login-link login-link-expand" data-toggle="modal" data-target="#login-modal">
                         <a href="#"><span class="fa fa-sign-in fa-fw fa-lg"></span>&nbsp;Log In</a>&nbsp;
                         <a href="#"><span class="fa fa-user-plus fa-fw"></span>&nbsp;Sign Up</a>
                     </div>
                 }
             </div>
-        </div>
+        </nav>
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -65,7 +64,7 @@
         </div>
     </div>
 
-    <div id="login-modal" class="modal" tabindex="-1" role="dialog">
+    <div id="login-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
