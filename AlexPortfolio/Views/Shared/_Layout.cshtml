@@ -35,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>
                                 <span class="@item.Icon" data-toggle="tooltip" data-placement="bottom" title=@item.Title></span>&nbsp;
-                                <span class="menu-link-title">@item.Title</span>
+                                <div class="menu-link-title">@item.Title</div>
                             </a>
                         </li>
                     }
@@ -82,7 +82,10 @@
                         <div class="form-group">
                             <label for="login-password">Password</label>
                             <input type="password" class="form-control auth-input" id="login-password" required>
-                            <div id="login-password-error" class="invalid-feedback auth-input-error">Please enter the password</div>
+                            <div id="login-password-error" class="invalid-feedback auth-input-error"></div>
+                            <div class="auth-input-error-message">
+                                Please enter the password
+                            </div>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input auth-input" id="login-remember-me">
@@ -99,40 +102,49 @@
     </div>
 
     <div id="signup-modal" class="modal fade auth-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header bg-dark">
-                    <h5 class="modal-title text-white">Sign Up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="text-white" aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body bg-white">
-                    <form id="signup-form" class="needs-validation" novalidate>
-                        <div class="form-group">
-                            <label for="signup-email">Email</label>
-                            <input type="text" class="form-control auth-input" id="signup-email" required>
-                            <div id="signup-email-error" class="invalid-feedback auth-input-error">Please enter the email</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-password">Password</label>
-                            <input type="password" class="form-control auth-input" id="signup-password" required>
-                            <div id="signup-password-error" class="invalid-feedback auth-input-error">Please enter the password</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-confirm-password">Confirm Password</label>
-                            <input type="password" class="form-control auth-input" id="signup-confirm-password" required>
-                            <div id="signup-confirm-password-error" class="invalid-feedback auth-input-error">Please confirm the password</div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer bg-white">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button id="signup-submit" type="button" class="btn btn-primary">Sign Up</button>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-white">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bg-white">
+                        <form id="signup-form" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input type="text" class="form-control auth-input" id="signup-email" required>
+                                <div id="signup-email-error" class="invalid-feedback auth-input-error"></div>
+                                <div class="auth-input-error-message">
+                                    Please enter the email
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" class="form-control auth-input" id="signup-password" required>
+                                <div id="signup-password-error" class="invalid-feedback auth-input-error"></div>
+                                <div class="auth-input-error-message">
+                                    Please enter the password
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-confirm-password">Confirm Password</label>
+                                <input type="password" class="form-control auth-input" id="signup-confirm-password" required>
+                                <div id="signup-confirm-password-error" class="invalid-feedback auth-input-error"></div>
+                                <div class="auth-input-error-message">
+                                    Please confirm the password
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="signup-submit" type="button" class="btn btn-primary">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

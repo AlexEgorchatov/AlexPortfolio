@@ -4,34 +4,24 @@
 
 $('.auth-modal').on('shown.bs.modal', () => {
     $('.auth-model, .show').find('.auth-input').first().trigger('focus');
+    $('.auth-input-error').each(function() {
+        $this = $(this);
+        $this.text($this.next().text());
+    });
 });
 
 $('.auth-modal').on('hidden.bs.modal', () => {
     $('.auth-input').removeClass('is-invalid');
     $('.auth-input').val('');
-    $('.auth-input-error').text('');
     $('.auth-input:checkbox').prop('checked', false);
 });
 
-$("#login-password").keyup(() => {
-    $('#login-password').removeClass('is-invalid');
-    $('#login-password-error').text('Please enter the password');
+$(".auth-input").keyup(function() {
+    $this = $(this);
+    $this.removeClass('is-invalid');
+    $this.text($this.next().text());
 });
 
-$("#signup-email").keyup(() => {
-    $('#signup-email').removeClass('is-invalid');
-    $('#signup-email-error').text('Please enter the email');
-});
-
-$("#signup-password").keyup(() => {
-    $('#signup-password').removeClass('is-invalid');
-    $('#signup-password-error').text('Please enter the password');
-});
-
-$("#signup-confirm-password").keyup(() => {
-    $('#signup-confirm-password').removeClass('is-invalid');
-    $('#signup-confirm-error').text('Please confirm the password');
-});
 
 $('#login-submit').on('click', () => {
     var $form = $('#login-form');
