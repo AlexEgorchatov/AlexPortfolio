@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Services.Description;
 using System.Xml.XPath;
 using AlexPortfolio.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
@@ -40,59 +41,57 @@ namespace AlexPortfolio.Controllers
             }
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<JsonResult> Login(LoginViewModel model)
+        public async Task<JsonResult> Login(LoginViewModel loginInfo)
         {
             if (!ModelState.IsValid)
             {
-                return Json(new { });
+                return Json(new { result = "error", message = "Please enter the password", url = Request.UrlReferrer });
             }
 
             string email = "alex.exorchatov@gmail.com";
+            var result = await SignInManager.PasswordSignInAsync(email, loginInfo.Password, loginInfo.RememberMe, shouldLockout: false);
 
-            var result = await SignInManager.PasswordSignInAsync(email, model.Password, model.RememberMe, shouldLockout: false);
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        break;
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return Json(new { result = "success", message = "Welcome back, Alex", url = Request.UrlReferrer });
 
-            //    case SignInStatus.LockedOut:
-            //        break;
+                case SignInStatus.LockedOut:
+                    return Json(new { result = "failure", message = "Something goes wrong, try later please", url = Request.UrlReferrer });
 
-            //    case SignInStatus.RequiresVerification:
-            //        break;
+                case SignInStatus.RequiresVerification:
+                    return Json(new { result = "failure", message = "Verification required", url = Request.UrlReferrer });
 
-            //    case SignInStatus.Failure:
-            //        break;
+                case SignInStatus.Failure:
+                    return Json(new { result = "failure", message = "The password is incorrect", url = Request.UrlReferrer });
 
-            //    default:
-            //        ModelState.AddModelError("", "Ivalid login attempt");
-            //        return View(model);
-            //}
-
-            return Json(new { });
+                default:
+                    return Json(new { result = "failure", message = "Something goes wrong, try again later", url = Request.UrlReferrer });
+            }
         }
 
         //[HttpPost]
-        //public Task<JsonResult> Login(LoginViewModel model)
+        //[AllowAnonymous]
+        //public async Task<JsonResult> Register(RegisterViewModel model)
         //{
-        //    return Json(new { message = "Okay!"});
-        //}
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Json(new { result = "error", message = "Something is wrong", url = Request.UrlReferrer });
+        //    }
 
-        // GET: Account
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //    var user = new ApplicationUser { UserName = "Alex", Email = model.Email };
+        //    var result = await UserManager.CreateAsync(user, model.Password);
+
+        //    if (result.Succeeded)
+        //    {
+        //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
     }
 }
