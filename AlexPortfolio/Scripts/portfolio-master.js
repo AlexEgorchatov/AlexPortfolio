@@ -39,11 +39,18 @@ $('#login-submit').on('click', () => {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ loginInfo: loginViewModel }),
             success: (data) => {
-                if (data.result == "success") {
-                    window.location = data.url;
+                var object = JSON.parse(data);
+                if (object.result == "success") {
+                    window.location = object.url;
                 } else {
-                    $('#login-password-error').text(data.message);
-                    $('#login-password').addClass('is-invalid');
+                    $.each(object.errors, function (index, value) {
+                        switch (value.source) {
+                            case "password":
+                                $('#login-password-error').text(value.message);
+                                $('#login-password').addClass('is-invalid');
+                                break;
+                        }
+                    });
                 }
             },
             error: (jqXhr, status, error) => {
@@ -60,22 +67,45 @@ $('#signup-submit').on('click', () => {
 
     if ($form.get(0).checkValidity()) {
 
-        var loginViewModel = {
-            Password: $('#login-password').val(),
-            RememberMe: $('#login-remember-me').is(':checked') ? true : false,
+        var registerViewModel = {
+            Email: $('#signup-email').val(),
+            Password: $('#signup-password').val(),
+            ConfirmPassword: $('#signup-confirm-password').val(),
         };
 
         $.ajax({
             type: "POST",
-            url: "/Account/Login",
+            url: "/Account/Register",
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify({ loginInfo: loginViewModel }),
+            data: JSON.stringify({ registerInfo: registerViewModel }),
             success: (data) => {
-                if (data.result == "success") {
-                    window.location = data.url;
+                var object = JSON.parse(data);
+                if (object.result == "success") {
+                    window.location = object.url;
                 } else {
-                    $('#login-password-error').text(data.message);
-                    $('#login-password').addClass('is-invalid');
+                    $.each(object.errors, function (index, value) {
+                        switch (value.source) {
+                            case "email":
+                                $('#signup-email-error').text(value.message);
+                                $('#signup-email').addClass('is-invalid');
+                                break;
+
+                            case "password":
+                                $('#signup-password-error').text(value.message);
+                                $('#signup-password').addClass('is-invalid');
+                                break;
+
+                            case "confirmpassword":
+                                $('#signup-confirm-password-error').text(value.message);
+                                $('#signup-confirm-password').addClass('is-invalid');
+                                break;
+
+                            case "signin":
+                                $('#signup-password-error').text(value.message);
+                                $('#signup-password').addClass('is-invalid');
+                                break;
+                        }
+                    });
                 }
             },
             error: (jqXhr, status, error) => {
@@ -93,4 +123,21 @@ $('#signup-submit').on('click', () => {
             $('#signup-confirm-password').addClass('is-invalid');
         }
     }
+});
+
+$('.signout-submit').on('click', () => {
+    $.ajax({
+        type: "POST",
+        url: "/Account/SignOut",
+        contentType: 'application/json; charset=utf-8',
+        success: (data) => {
+            var object = JSON.parse(data);
+            if (object.result == "success") {
+                window.location = object.url;
+            }
+        },
+        error: (jqXhr, status, error) => {
+            alert("jqXhr status: " + jqXhr.status + " | status: " + status + " | error: " + error);
+        }
+    });
 });

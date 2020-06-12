@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,6 +11,7 @@ using AlexPortfolio.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 
 namespace AlexPortfolio.Controllers
 {
@@ -41,57 +43,157 @@ namespace AlexPortfolio.Controllers
             }
         }
 
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<JsonResult> Login(LoginViewModel loginInfo)
         {
+            dynamic respond = new ExpandoObject();
+
             if (!ModelState.IsValid)
             {
-                return Json(new { result = "error", message = "Please enter the password", url = Request.UrlReferrer });
+                respond.result = "error";
+                var errors = new List<dynamic>();
+
+                foreach (var key in ModelState.Keys.Where(i => ModelState[i].Errors.Any()))
+                {
+                    errors.Add(new
+                    {
+                        source = key.Split('.')[1].ToLower(),
+                        message = ModelState[key].Errors.First().ErrorMessage
+                    });
+                }
+
+                respond.errors = errors;
+                respond.url = Request.UrlReferrer;
+
+                return Json(JsonConvert.SerializeObject(respond));
             }
 
-            string email = "alex.exorchatov@gmail.com";
-            var result = await SignInManager.PasswordSignInAsync(email, loginInfo.Password, loginInfo.RememberMe, shouldLockout: false);
+            //string email = "vit.ganchuk@gmail.com ";
+            var result = await SignInManager.PasswordSignInAsync("Alex", loginInfo.Password, loginInfo.RememberMe, shouldLockout: false);
 
             switch (result)
             {
                 case SignInStatus.Success:
-                    return Json(new { result = "success", message = "Welcome back, Alex", url = Request.UrlReferrer });
+                    respond.result = "success";
+                    respond.errors = new List<dynamic>();
+                    respond.url = Request.UrlReferrer;
+                    break;
 
                 case SignInStatus.LockedOut:
-                    return Json(new { result = "failure", message = "Something goes wrong, try later please", url = Request.UrlReferrer });
+                    respond.result = "error";
+                    respond.errors = new List<dynamic>() { new
+                    {
+                        source = "password",
+                        message = "Something goes wrong, try later please",
+                    } };
+                    respond.url = Request.UrlReferrer;
+                    break;
 
                 case SignInStatus.RequiresVerification:
-                    return Json(new { result = "failure", message = "Verification required", url = Request.UrlReferrer });
+                    respond.result = "error";
+                    respond.errors = new List<dynamic>() { new
+                    {
+                        source = "password",
+                        message = "Verification required",
+                    } };
+                    respond.url = Request.UrlReferrer;
+                    break;
 
                 case SignInStatus.Failure:
-                    return Json(new { result = "failure", message = "The password is incorrect", url = Request.UrlReferrer });
+                    respond.result = "error";
+                    respond.errors = new List<dynamic>() { new
+                    {
+                        source = "password",
+                        message = "The password is incorrect",
+                    } };
+                    respond.url = Request.UrlReferrer;
+                    break;
 
                 default:
-                    return Json(new { result = "failure", message = "Something goes wrong, try again later", url = Request.UrlReferrer });
+                    respond.result = "error";
+                    respond.errors = new List<dynamic>() { new
+                    {
+                        source = "password",
+                        message = "Something goes wrong, try later please",
+                    } };
+                    respond.url = Request.UrlReferrer;
+                    break;
+            }
+
+            return Json(JsonConvert.SerializeObject(respond));
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<JsonResult> Register(RegisterViewModel registerInfo)
+        {
+            dynamic respond = new ExpandoObject();
+
+            if (!ModelState.IsValid)
+            {
+                respond.result = "error";
+                var errors = new List<dynamic>();
+
+                foreach (var key in ModelState.Keys.Where(i => ModelState[i].Errors.Any()))
+                {
+                    errors.Add(new
+                    {
+                        source = key.Split('.')[1].ToLower(),
+                        message = ModelState[key].Errors.First().ErrorMessage
+                    });
+                }
+
+                respond.errors = errors;
+                respond.url = Request.UrlReferrer;
+
+                return Json(JsonConvert.SerializeObject(respond));
+            }
+
+            var user = new ApplicationUser { UserName = "Alex", Email = registerInfo.Email };
+            var result = await UserManager.CreateAsync(user, registerInfo.Password);
+
+            if (result.Succeeded)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                respond.result = "success";
+                respond.errors = new List<dynamic>();
+                respond.url = Request.UrlReferrer;
+
+                return Json(JsonConvert.SerializeObject(respond));
+            }
+            else
+            {
+                respond.result = "error";
+                respond.errors = new List<dynamic>() { new
+                {
+                    source = "signin",
+                    message = result.Errors.FirstOrDefault()
+                } };
+                respond.url = Request.UrlReferrer;
+
+                return Json(JsonConvert.SerializeObject(respond));
             }
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<JsonResult> Register(RegisterViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Json(new { result = "error", message = "Something is wrong", url = Request.UrlReferrer });
-        //    }
+        [HttpPost]
+        public JsonResult SignOut()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
-        //    var user = new ApplicationUser { UserName = "Alex", Email = model.Email };
-        //    var result = await UserManager.CreateAsync(user, model.Password);
+            dynamic respond = new ExpandoObject();
+            respond.result = "success";
+            respond.url = Request.UrlReferrer;
 
-        //    if (result.Succeeded)
-        //    {
-        //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
+            return Json(JsonConvert.SerializeObject(respond));
+        }
     }
 }

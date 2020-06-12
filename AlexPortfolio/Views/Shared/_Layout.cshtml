@@ -10,60 +10,63 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="container navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (Model.IsAuthorized)
+        {
+            <div class="login-link login-link-collapse">
+                <a href="#" class="signout-submit"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
+            </div>
+        }
+        else
+        {
+            <div class="login-link login-link-collapse">
+                <a href="#" data-toggle="modal" data-target="#login-modal"><span class="fa fa-sign-in fa-fw fa-lg">&nbsp;</span>Log In</a>&nbsp;
+                <a href="#" data-toggle="modal" data-target="#signup-modal"><span class="fa fa-user-plus fa-fw">&nbsp;</span>Sign Up</a>
+            </div>
+        }
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                @foreach (var item in Model.Menu)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>
+                            <span class="@item.Icon menu-link-icon" data-toggle="tooltip" data-placement="bottom" style="background-color:transparent;" title=@item.Title></span>&nbsp;
+                            <span class="menu-link-title">@item.Title</span>
+                        </a>
+                    </li>
+                }
+            </ul>
             @if (Model.IsAuthorized)
             {
-                <div class="login-link login-link-collapse">
-                    <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
+                <div class="login-link login-link-expand">
+                    <a href="#" class="signout-submit"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
                 </div>
             }
             else
             {
-                <div class="login-link login-link-collapse">
-                    <a href="#" data-toggle="modal" data-target="#login-modal"><span class="fa fa-sign-in fa-fw fa-lg">&nbsp;</span>Log In</a>&nbsp;
-                    <a href="#" data-toggle="modal" data-target="#signup-modal"><span class="fa fa-user-plus fa-fw">&nbsp;</span>Sign Up</a>
+                <div class="login-link login-link-expand">
+                    <a href="#" data-toggle="modal" data-target="#login-modal"><span class="fa fa-sign-in fa-fw fa-lg"></span>&nbsp;Log In</a>&nbsp;
+                    <a href="#" data-toggle="modal" data-target="#signup-modal"><span class="fa fa-user-plus fa-fw"></span>&nbsp;Sign Up</a>
                 </div>
             }
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    @foreach (var item in Model.Menu)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link @(item.IsSelected ? "selected" : "")" href=@item.Href>
-                                <span class="@item.Icon" data-toggle="tooltip" data-placement="bottom" title=@item.Title></span>&nbsp;
-                                <div class="menu-link-title">@item.Title</div>
-                            </a>
-                        </li>
-                    }
-                </ul>
-                @if (Model.IsAuthorized)
-                {
-                    <div class="login-link login-link-expand">
-                        <a href="#"><span class="fa fa-sign-out"></span>&nbsp;Sing Out</a>
-                    </div>
-                }
-                else
-                {
-                    <div class="login-link login-link-expand">
-                        <a href="#" data-toggle="modal" data-target="#login-modal"><span class="fa fa-sign-in fa-fw fa-lg"></span>&nbsp;Log In</a>&nbsp;
-                        <a href="#" data-toggle="modal" data-target="#signup-modal"><span class="fa fa-user-plus fa-fw"></span>&nbsp;Sign Up</a>
-                    </div>
-                }
-            </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <div class="footer">
-            <p><small>Copyright &copy; Alex Roch, @DateTime.Now.Year</small></p>
-        </div>
     </div>
+
+    <nav class="container fixed-bottom navbar-dark bg-dark">
+        <p class="text-white text-center copyright">Copyright &copy; Alex Roch, @DateTime.Now.Year</p>
+    </nav>
+
+    @*<div class="footer">
+        <hr />
+        <p><small>Copyright &copy; Alex Roch, @DateTime.Now.Year</small></p>
+    </div>*@
 
     <div id="login-modal" class="modal fade auth-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
@@ -102,49 +105,49 @@
     </div>
 
     <div id="signup-modal" class="modal fade auth-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-dark">
-                    <div class="modal-header bg-dark">
-                        <h5 class="modal-title text-white">Sign Up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="text-white" aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body bg-white">
-                        <form id="signup-form" class="needs-validation" novalidate>
-                            <div class="form-group">
-                                <label for="signup-email">Email</label>
-                                <input type="text" class="form-control auth-input" id="signup-email" required>
-                                <div id="signup-email-error" class="invalid-feedback auth-input-error"></div>
-                                <div class="auth-input-error-message">
-                                    Please enter the email
-                                </div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body bg-white">
+                    <form id="signup-form" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="text" class="form-control auth-input" id="signup-email" required>
+                            <div id="signup-email-error" class="invalid-feedback auth-input-error"></div>
+                            <div class="auth-input-error-message">
+                                Please enter the email
                             </div>
-                            <div class="form-group">
-                                <label for="signup-password">Password</label>
-                                <input type="password" class="form-control auth-input" id="signup-password" required>
-                                <div id="signup-password-error" class="invalid-feedback auth-input-error"></div>
-                                <div class="auth-input-error-message">
-                                    Please enter the password
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" class="form-control auth-input" id="signup-password" required>
+                            <div id="signup-password-error" class="invalid-feedback auth-input-error"></div>
+                            <div class="auth-input-error-message">
+                                Please enter the password
                             </div>
-                            <div class="form-group">
-                                <label for="signup-confirm-password">Confirm Password</label>
-                                <input type="password" class="form-control auth-input" id="signup-confirm-password" required>
-                                <div id="signup-confirm-password-error" class="invalid-feedback auth-input-error"></div>
-                                <div class="auth-input-error-message">
-                                    Please confirm the password
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm-password">Confirm Password</label>
+                            <input type="password" class="form-control auth-input" id="signup-confirm-password" required>
+                            <div id="signup-confirm-password-error" class="invalid-feedback auth-input-error"></div>
+                            <div class="auth-input-error-message">
+                                Please confirm the password
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer bg-white">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button id="signup-submit" type="button" class="btn btn-primary">Sign Up</button>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="signup-submit" type="button" class="btn btn-primary">Sign Up</button>
                 </div>
             </div>
         </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
