@@ -51,6 +51,10 @@
     margin: 0.4rem 0rem;
 }
 
+.modal-sign {
+    display: inline-flex;
+}
+
 @media (min-width: 768px) {
     .login-link-collapse {
         display: none;
