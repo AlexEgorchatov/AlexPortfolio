@@ -8,6 +8,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false);
+    }
 </head>
 <body>
     <nav class="container navbar navbar-expand-md fixed-top navbar-dark bg-dark">
@@ -193,6 +197,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/portfolio")
-    @*@RenderSection("scripts", required: false)*@
+    @if (IsSectionDefined("AddToFooter"))
+    {
+        @RenderSection("AddToFooter", required: false);
+    }
 </body>
 </html>

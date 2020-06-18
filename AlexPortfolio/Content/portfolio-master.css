@@ -1,11 +1,12 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: 20px;
+    color: #888;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding: 70px 15px;
+    padding: 70px 15px 30px 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -15,12 +16,31 @@
     white-space: normal;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+.modal-open .fixed-top,
+.modal-open .fixed-bottom{
+    padding-right: 16px !important;
+}
+
+.modal-open{
+    overflow: inherit;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #555;
 }
 
 .nav-link.selected {

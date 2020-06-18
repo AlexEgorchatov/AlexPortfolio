@@ -1,4 +1,32 @@
-﻿#home-picture {
-    width: 100%;
-    height: auto;
+﻿.body-content {
+    /*    background-color: #394047;*/
+}
+
+#home-container {
+    position: relative;
+    width: auto;
+    height: 50vh;
+}
+
+#home-content {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+#home-code {
+    background: linear-gradient(to right, transparent, #394047), url(Pictures/code.jpg);
+}
+
+#home-alex {
+    background-image: url(Pictures/alex.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50vh;
+    width: 50vh;
+    background-color: transparent;
+    box-shadow: 0 0 5px 5px white inset;
+    border-radius: 50%;
+    margin: 0 auto;
 }
