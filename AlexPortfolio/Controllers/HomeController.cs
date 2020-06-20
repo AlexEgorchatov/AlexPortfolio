@@ -1,10 +1,8 @@
 ﻿using AlexPortfolio.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Newtonsoft.Json;
+using System.Dynamic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace AlexPortfolio.Controllers
 {
@@ -13,7 +11,28 @@ namespace AlexPortfolio.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(new MasterViewModel(MenuType.Index, Request.IsAuthenticated, HttpContext.User));
+            string greeting = "Hi, I am Alex";
+            string intro = "Recent grad from VIU";
+
+            return View(new HomeViewModel(MenuType.Index, Request.IsAuthenticated, HttpContext.User) 
+            { 
+                Greeting = greeting,
+                Intro = intro
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<JsonResult> UpdateHome(HomeContentViewModel homeContent)
+        {
+            dynamic respond = new ExpandoObject();
+
+            respond.result = "success";
+            respond.greeting = homeContent.Greeting;
+            respond.intro = homeContent.Intro;
+            respond.error = "";
+
+            return Json(JsonConvert.SerializeObject(respond));
         }
 
         [HttpGet]

@@ -1,4 +1,6 @@
-﻿@section AddToHead{
+﻿@model AlexPortfolio.Models.HomeViewModel
+
+@section AddToHead{
     <link href="@Url.Content("~/Content/portfolio-home.css")" rel="stylesheet" type="text/css" />
 }
 
@@ -10,16 +12,16 @@
     <div class="col-md-6 order-md-1 col-12 order-12">
         <div id="home-container" class="d-flex justify-content-center">
             <div id="home-content">
-                <h1 id="home-greeting">Hi, I am Alex</h1>
-                <h3 id="home-intro">Software developer</h3>
+                <h1 id="home-greeting">@Model.Greeting</h1>
+                <h3 id="home-intro">@Model.Intro</h3>
                 <div class="collapse" id="home-editor">
                     <div class="form-group">
                         <label for="home-greeting-input">Greeting</label>
-                        <input type="text" class="form-control auth-input" id="home-greeting-input" required>
+                        <input type="text" class="form-control" id="home-greeting-input" required>
                     </div>
                     <div class="form-group">
                         <label for="honme-intro-input">Intro</label>
-                        <input type="text" class="form-control auth-input" id="home-intro-input" required>
+                        <input type="text" class="form-control" id="home-intro-input" required>
                     </div>
                 </div>
                 <hr />
@@ -32,7 +34,7 @@
         <div class="float-right">
             <a id="home-edit" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="collapse" data-target="#home-editor"></a>
             <a id="home-edit-cancel" class="home-apply-changes fa fa-times fa-lg" aria-hidden="true" data-toggle="collapse" data-target="#home-editor"></a>
-            <a id="home-edit-save" class="home-apply-changes fa fa-check-square-o fa-lg" aria-hidden="true" data-toggle="collapse" data-target="#home-editor"></a>
+            <a id="home-edit-save" class="home-apply-changes fa fa-check-square-o fa-lg" aria-hidden="true"></a>
         </div>
         <div id="home-alex" class="home-picture"></div>
     </div>

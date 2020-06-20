@@ -35,7 +35,7 @@ $('#login-submit').on('click', () => {
 
         $.ajax({
             type: "POST",
-            url: "/Account/Login3",
+            url: "/Account/Login",
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ loginInfo: loginViewModel }),
             success: (data) => {
