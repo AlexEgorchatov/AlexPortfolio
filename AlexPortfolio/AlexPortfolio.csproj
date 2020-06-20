@@ -84,6 +84,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -162,10 +163,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\DBHelper.cs" />
+    <Compile Include="Data\PortfolioDataContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PortfolioDataContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContentViewModels.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -173,21 +179,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
     <Compile Include="Models\MenuItemViewModel.cs" />
-    <Compile Include="Models\PortfolioDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PortfolioDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PortfolioDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PortfolioDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PortfolioDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PortfolioDataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -204,16 +195,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\portfolio-master.css" />
-    <Content Include="Models\PortfolioDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PortfolioDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>PortfolioDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PortfolioDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PortfolioDataModel.edmx</DependentUpon>
-      <LastGenOutput>PortfolioDataModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Fonts\fontawesome-webfont.eot" />
@@ -222,13 +203,14 @@
     <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Fonts\FontAwesome.otf" />
     <Content Include="Scripts\bootstrap.js.map" />
-    <EntityDeploy Include="Models\PortfolioDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PortfolioDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PortfolioDataModel.edmx.diagram">
-      <DependentUpon>PortfolioDataModel.edmx</DependentUpon>
+    <Content Include="Data\PortfolioDataContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PortfolioDataContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
+    <None Include="Data\PortfolioDataContext.dbml.layout">
+      <DependentUpon>PortfolioDataContext.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -274,6 +256,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
