@@ -1,0 +1,26 @@
+﻿body {
+
+}
+
+#contact-text {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#contact-container {
+    position: relative;
+    width: auto;
+}
+
+#contact-content {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+#contact-send-email {
+}
+
+#contact-type-message {
+    min-height: 150px;
+}

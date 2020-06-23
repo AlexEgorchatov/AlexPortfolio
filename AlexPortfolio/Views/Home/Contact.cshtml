@@ -1,3 +1,46 @@
-﻿<h2>Contact Me</h2>
+﻿@section AddToHead{
+    <link href="@Url.Content("~/Content/portfolio-contact.css")" rel="stylesheet" type="text/css" />
+}
 
-<p>Use this area to provide contact information.</p>
+@section AddToFooter{
+    <script src="@Url.Content("~/Scripts/portfolio-contact.js")"></script>
+}
+
+<div id="home-container" class="row">
+    <div class="col col-md-12">
+        <h2 id="contact-text">You can contact me by calling the following phone number, or sending me an email using the form below</h2>
+    </div>
+    <div class="col-md-6 order-md-1 col-12">
+        <div id="contact-container">
+            <h3>Phone: </h3>
+            <p>8-3434-3434-4343</p>
+            <h3>Email: </h3>
+            <p>coolemail.com</p>
+        </div>
+    </div>
+    <div class="col-md-6 order-md-12 col-12">
+        <form id="signup-form" class="needs-validation" novalidate>
+            <div class="form-group">
+                <input type="text" class="form-control" id="contact-email" placeholder="Your Email" required>
+                <div id="contact-email-error" class="invalid-feedback auth-input-error"></div>
+                <div class="auth-input-error-message">
+                    Please type your email
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="contact-subject" placeholder="Subject" required>
+                <div id="contact-subject" class="invalid-feedback auth-input-error"></div>
+                <div class="auth-input-error-message">
+                    Please type the subject
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea id="contact-type-message" class="form-control" placeholder="Type text" required></textarea>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button id="contact-send-email" type="button" class="btn btn-primary float-right">Send Email</button>
+            </div>
+        </form>
+    </div>
+</div>

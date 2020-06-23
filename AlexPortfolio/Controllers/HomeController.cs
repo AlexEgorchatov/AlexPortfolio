@@ -1,9 +1,12 @@
 ﻿using AlexPortfolio.Data;
 using AlexPortfolio.Models;
 using Newtonsoft.Json;
+using System;
+using System.Drawing;
 using System.Dynamic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Windows.Media.Imaging;
 
 namespace AlexPortfolio.Controllers
 {
@@ -14,10 +17,10 @@ namespace AlexPortfolio.Controllers
         {
             var content = DBHelper.GetHomeContent();
 
-            return View(new HomeViewModel(MenuType.Index, Request.IsAuthenticated, HttpContext.User) 
-            { 
+            return View(new HomeViewModel(MenuType.Index, Request.IsAuthenticated, HttpContext.User)
+            {
                 Greeting = content.Greeting,
-                Intro = content.Intro
+                Intro = content.Intro,
             });
         }
 

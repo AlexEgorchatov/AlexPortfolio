@@ -144,3 +144,20 @@ $('.signout-submit').on('click', () => {
         }
     });
 });
+
+$('.editor-collapse').on('hidden.bs.collapse', function () {
+    $('#edit-link').css('display', 'inline-block');
+    $('.dashboard-apply-changes').css('display', 'none');
+    $('#home-greeting-input').val('');
+    $('#home-intro-input').val('');
+});
+
+$('.editor-collapse').on('show.bs.collapse', function () {
+    $('#home-greeting-input').val($('#home-greeting').text());
+    $('#home-intro-input').val($('#home-intro').text());
+});
+
+$('.editor-collapse').on('shown.bs.collapse', function () {
+    $('#edit-link').css('display', 'none');
+    $('.dashboard-apply-changes').css('display', 'inline-block');
+});

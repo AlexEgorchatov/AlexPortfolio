@@ -14,7 +14,7 @@
             <div id="home-content">
                 <h1 id="home-greeting">@Model.Greeting</h1>
                 <h3 id="home-intro">@Model.Intro</h3>
-                <div class="collapse" id="home-editor">
+                <div class="collapse editor-collapse" id="home-editor">
                     <div class="form-group">
                         <label for="home-greeting-input">Greeting</label>
                         <input type="text" class="form-control" id="home-greeting-input" required>
@@ -31,11 +31,6 @@
         </div>
     </div>
     <div class="col-md-6 order-md-12 col-12 order-1">
-        <div class="float-right">
-            <a id="home-edit" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="collapse" data-target="#home-editor"></a>
-            <a id="home-edit-cancel" class="home-apply-changes fa fa-times fa-lg" aria-hidden="true" data-toggle="collapse" data-target="#home-editor"></a>
-            <a id="home-edit-save" class="home-apply-changes fa fa-check-square-o fa-lg" aria-hidden="true"></a>
-        </div>
         <div id="home-alex" class="home-picture"></div>
     </div>
 </div>

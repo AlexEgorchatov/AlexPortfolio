@@ -1,4 +1,4 @@
-﻿$('#home-edit-save').on('click', () => {
+﻿$('#save-link').on('click', () => {
     var homeContentViewModel = {
         Greeting: $('#home-greeting-input').val(),
         Intro: $('#home-intro-input').val(),
@@ -32,19 +32,12 @@
     });
 });
 
-$('#home-editor').on('hidden.bs.collapse', function () {
-    $('#home-edit').css('display', 'inline-block');
-    $('.home-apply-changes').css('display', 'none');
+$('.editor-collapse').on('hidden.bs.collapse', function () {
     $('#home-greeting-input').val('');
     $('#home-intro-input').val('');
 });
 
-$('#home-editor').on('show.bs.collapse', function () {
+$('.editor-collapse').on('show.bs.collapse', function () {
     $('#home-greeting-input').val($('#home-greeting').text());
     $('#home-intro-input').val($('#home-intro').text());
-});
-
-$('#home-editor').on('shown.bs.collapse', function () {
-    $('#home-edit').css('display', 'none');
-    $('.home-apply-changes').css('display', 'inline-block');
 });

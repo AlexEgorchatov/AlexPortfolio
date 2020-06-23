@@ -60,6 +60,14 @@
     </nav>
 
     <div class="container body-content">
+        <div class="dashboard">
+            <div class="float-right">
+                <a id="edit-link" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="collapse" data-target=".editor-collapse"></a>
+                <a id="cancel-link" class="dashboard-apply-changes fa fa-times fa-lg" aria-hidden="true" data-toggle="collapse" data-target=".editor-collapse"></a>
+                <a id="save-link" class="dashboard-apply-changes fa fa-check-square-o fa-lg" aria-hidden="true"></a>
+            </div>
+        </div>
+
         @RenderBody()
     </div>
 

@@ -47,6 +47,14 @@
     color: white !important;
 }
 
+.dashboard {
+    height: 24px;
+}
+
+.dashboard-apply-changes {
+    display: none;
+}
+
 .login-link {
     position: relative;
     float: right;
