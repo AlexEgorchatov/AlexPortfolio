@@ -48,7 +48,30 @@ namespace AlexPortfolio.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            return View(new MasterViewModel(MenuType.Contact, Request.IsAuthenticated, HttpContext.User));
+            var content = DBHelper.GetContactContent();
+
+            return View(new ContactViewModel(MenuType.Contact, Request.IsAuthenticated, HttpContext.User)
+            {
+                HeaderText = content.HeaderText,
+                Phone = content.Phone,
+                Email = content.Email
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<JsonResult> UpdateContact(ContactContentViewModel contactContent)
+        {
+            var content = DBHelper.UpdateContactContent(contactContent);
+            dynamic respond = new ExpandoObject();
+
+            respond.result = "success";
+            respond.headerText = content.HeaderText;
+            respond.phone = content.Phone;
+            respond.email = content.Email;
+            respond.error = "";
+
+            return Json(JsonConvert.SerializeObject(respond));
         }
     }
 }

@@ -2,7 +2,7 @@
 
 }
 
-#contact-text {
+#contact-header-text {
     text-align: center;
     margin-bottom: 1em;
 }
@@ -19,8 +19,28 @@
 }
 
 #contact-send-email {
+
 }
 
 #contact-type-message {
     min-height: 150px;
+}
+
+#contact-header-text-input {
+    min-height: 40px;
+}
+
+#contact-separator {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #contact-separator {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    #contact-header-text-input {
+        min-height: 150px;
+    }
 }

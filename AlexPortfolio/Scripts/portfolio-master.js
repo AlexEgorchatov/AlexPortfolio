@@ -25,7 +25,6 @@ $(".auth-input").keyup(function() {
 
 $('#login-submit').on('click', () => {
     var $form = $('#login-form');
-
     if ($form.get(0).checkValidity()) {
 
         var loginViewModel = {

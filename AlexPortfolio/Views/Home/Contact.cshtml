@@ -1,4 +1,6 @@
-﻿@section AddToHead{
+﻿@model AlexPortfolio.Models.ContactViewModel
+
+@section AddToHead{
     <link href="@Url.Content("~/Content/portfolio-contact.css")" rel="stylesheet" type="text/css" />
 }
 
@@ -8,16 +10,35 @@
 
 <div id="home-container" class="row">
     <div class="col col-md-12">
-        <h2 id="contact-text">You can contact me by calling the following phone number, or sending me an email using the form below</h2>
+        <h2 id="contact-header-text">@Model.HeaderText</h2>
+        <div class="collapse editor-collapse" id="contact-header-text-editor">
+            <div class="form-group">
+                <label for="contact-header-text-input">Header text</label>
+                <textarea class="form-control" id="contact-header-text-input" required></textarea>
+            </div>
+        </div>
     </div>
+
     <div class="col-md-6 order-md-1 col-12">
         <div id="contact-container">
             <h3>Phone: </h3>
-            <p>8-3434-3434-4343</p>
+            <p id="contact-phone">@Model.Phone</p>
             <h3>Email: </h3>
-            <p>coolemail.com</p>
+            <p id="contact-email">@Model.Email</p>
+            <div class="collapse editor-collapse" id="contact-body-editor">
+                <div class="form-group">
+                    <label for="contact-phone-input">Phone</label>
+                    <input type="text" class="form-control" id="contact-phone-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email-input">Email</label>
+                    <input type="text" class="form-control" id="contact-email-input" required>
+                </div>
+            </div>
+            <hr id="contact-separator" />
         </div>
     </div>
+
     <div class="col-md-6 order-md-12 col-12">
         <form id="signup-form" class="needs-validation" novalidate>
             <div class="form-group">
