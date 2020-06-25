@@ -1,4 +1,6 @@
-﻿namespace AlexPortfolio.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlexPortfolio.Models
 {
     public class HomeContentViewModel
     {

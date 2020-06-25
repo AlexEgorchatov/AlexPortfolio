@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using System;
 using System.Drawing;
 using System.Dynamic;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Windows.Media.Imaging;
@@ -70,6 +72,49 @@ namespace AlexPortfolio.Controllers
             respond.phone = content.Phone;
             respond.email = content.Email;
             respond.error = "";
+
+            return Json(JsonConvert.SerializeObject(respond));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<JsonResult> SendEmail(SendEmailViewModel email)
+        {
+            dynamic respond = new ExpandoObject();
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var message = new MailMessage();
+                    message.To.Add(new MailAddress("alex.exorchatov@gmail.com"));
+                    message.From = new MailAddress(email.Sender);
+                    message.Subject = email.Subject;
+                    message.Body = email.Message;
+
+                    var credentials = new NetworkCredential(message.From.Address, "Ukjccbz*Cnhtkjr");
+
+                    SmtpClient client = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        Credentials = credentials
+                    };
+
+                    client.Send(message);
+
+                    respond.result = "success";
+                    respond.error = "";
+
+                    return Json(JsonConvert.SerializeObject(respond));
+                }
+            }
+            catch (Exception ex)
+            {
+                respond.result = "error";
+                respond.error = ex.Message;
+            }
 
             return Json(JsonConvert.SerializeObject(respond));
         }

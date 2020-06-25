@@ -35,6 +35,46 @@
     });
 });
 
+$('#contact-send-email').on('click', () => {
+    var $form = $('#contact-email-form');
+    if ($form.get(0).checkValidity()) {
+
+        var sendEmailViewModel = {
+            Sender: $('#contact-sender-email').val(),
+            Subject: $('#contact-subject').val(),
+            Message: $('#contact-type-message').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "SendEmail",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ email: sendEmailViewModel }),
+            success: (data) => {
+                if (data == "") {
+                    $('#signup-modal').modal('show');
+                } else {
+                    var object = JSON.parse(data);
+                    if (object.result == "success") {
+
+                    } else {
+
+                    }
+                }
+                error: (jqXhr, status, error) => {
+                    var error = "jqXhr status: " + jqXhr.status + " jqXhr status text: " + jqXhr.statusText + " | status: " + status + " | error: " + error;
+                    $('#error-text').text(error);
+                    $('#error-modal').modal('show');
+                }
+            }
+        });
+    } else {
+        if (!$('#contact-sender-email').val()) {
+            $('#contact-sender-email').addClass('is-invalid');
+        }
+    }
+});
+
 $('.editor-collapse').on('hidden.bs.collapse', function () {
     $('#contact-header-text-input').val('');
     $('#contact-phone-input').val('');

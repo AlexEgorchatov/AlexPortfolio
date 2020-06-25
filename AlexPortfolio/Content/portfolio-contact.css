@@ -34,6 +34,11 @@
     display: none;
 }
 
+.contact-email-error-message {
+    visibility: collapse;
+    height: 0px;
+}
+
 @media (max-width: 768px) {
     #contact-separator {
         display: block;
