@@ -77,7 +77,7 @@ namespace AlexPortfolio.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<JsonResult> SendEmail(SendEmailViewModel email)
         {
             dynamic respond = new ExpandoObject();

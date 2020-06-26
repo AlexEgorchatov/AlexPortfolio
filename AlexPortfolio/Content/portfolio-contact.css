@@ -22,7 +22,7 @@
 
 }
 
-#contact-type-message {
+#contact-send-email-message {
     min-height: 150px;
 }
 
@@ -34,7 +34,7 @@
     display: none;
 }
 
-.contact-email-error-message {
+#contact-email-error-message {
     visibility: collapse;
     height: 0px;
 }

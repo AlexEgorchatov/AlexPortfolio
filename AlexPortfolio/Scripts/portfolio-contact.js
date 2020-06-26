@@ -35,14 +35,20 @@
     });
 });
 
+$("#contact-send-email-input").keyup(function () {
+    $this = $(this);
+    $this.removeClass('is-invalid');
+    $this.text('');
+});
+
 $('#contact-send-email').on('click', () => {
     var $form = $('#contact-email-form');
     if ($form.get(0).checkValidity()) {
 
         var sendEmailViewModel = {
-            Sender: $('#contact-sender-email').val(),
-            Subject: $('#contact-subject').val(),
-            Message: $('#contact-type-message').val()
+            Sender: $('#contact-send-email-input').val(),
+            Subject: $('#contact-send-email-subject').val(),
+            Message: $('#contact-send-email-message').val()
         };
 
         $.ajax({
@@ -58,7 +64,8 @@ $('#contact-send-email').on('click', () => {
                     if (object.result == "success") {
 
                     } else {
-
+                        $('#contact-email-error').text(object.error);
+                        $('#contact-send-email-input').addClass('is-invalid');
                     }
                 }
                 error: (jqXhr, status, error) => {
@@ -69,8 +76,9 @@ $('#contact-send-email').on('click', () => {
             }
         });
     } else {
-        if (!$('#contact-sender-email').val()) {
-            $('#contact-sender-email').addClass('is-invalid');
+        if (!$('#contact-send-email-input').val()) {
+            $('#contact-email-error').text($('#contact-email-error-message').text());
+            $('#contact-send-email-input').addClass('is-invalid');
         }
     }
 });
