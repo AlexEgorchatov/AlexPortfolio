@@ -1,33 +1,92 @@
-﻿<h2>About Me</h2>
+﻿@section AddToHead{
+    <link href="@Url.Content("~/Content/portfolio-about.css")" rel="stylesheet" type="text/css" />
+}
 
-<p>Use this area to provide personal information.</p>
+@*@section AddToFooter{
+    <script src="@Url.Content("~/Scripts/portfolio-home.js")"></script>
+}*@
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac ex viverra, consequat risus id, sodales nisl. Duis euismod, felis sit amet ullamcorper auctor, dolor nunc venenatis urna, vitae ultrices tortor leo aliquet sapien. Cras vel consectetur velit. Nunc id turpis vel sem pellentesque mollis. Vivamus eu arcu diam. Suspendisse mollis, urna dictum accumsan consequat, lorem est feugiat mauris, euismod interdum neque lacus vel est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque consequat lorem vitae augue faucibus molestie. Etiam sollicitudin lacus eu velit scelerisque, ut facilisis magna consectetur. Nam non nunc erat. Maecenas hendrerit venenatis lacus, vitae sagittis justo iaculis at.
+<div class="row">
+    <div class="col-md-5 col-lg-4 col-xl-4 col-12">
+        <div id="about-alex"></div>
+    </div>
 
-    Aliquam erat volutpat. Pellentesque scelerisque consequat odio ultrices sollicitudin. Nam in imperdiet elit. Praesent in hendrerit nisi. Nulla venenatis a neque sed tincidunt. Praesent sed quam ac quam laoreet finibus nec lobortis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas nisi lorem, ut vehicula purus rutrum sed. Cras aliquam enim quis lacus interdum, condimentum tincidunt sem dignissim. Nullam eu felis arcu. Pellentesque at vestibulum nulla, in auctor arcu. Proin id dolor molestie metus tincidunt scelerisque. Pellentesque tristique turpis sit amet tellus dignissim tempor. Praesent posuere lorem non orci blandit, quis tincidunt leo dapibus.
+    <div class="col-md-7 col-lg-8 col-xl-8 col-12">
+        <div class="row">
+            <p>A computing science student from Vancouver Island University with two years of proven successful experience in software development. Recognized for performance excellence. Using .Net, WPF, Entity Framework, and MS SQL server developed and deployed the company’s inventory management system with 50.000+ items to replace an old EPDM solution. </p>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>Address:</p>
+                <p>Phone:</p>
+                <p>Email:</p>
+            </div>
+            <div class="col-md-10">
+                <p>387 Cariboo Drive, Nanaimo BC, Canada</p>
+                <p>1-250-618-67-78</p>
+                <p>alex.exorchatov@gmail.com</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100000820661738" target="_blank"><span class="fa fa-facebook-square" aria-hidden="true">&nbsp;</span>Facebook</a></li>
+                    <li><a href="https://www.instagram.com/anotherfakesub/" target="_blank"><span class="fa fa-instagram" aria-hidden="true">&nbsp;</span>Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/alex-roch-686b7718a/" target="_blank"><span class="fa fa-linkedin-square" aria-hidden="true">&nbsp;</span>LinkedIn</a></li>
+                    <li><a href="https://github.com/AnotherFakeSub/" target="_blank"><span class="fa fa-github-square" aria-hidden="true">&nbsp;</span>GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    Proin fringilla cursus est id scelerisque. Donec non varius est, a mattis augue. Suspendisse sit amet odio felis. Etiam dictum, eros eget suscipit aliquet, lorem dolor lobortis augue, ut dignissim arcu nibh eget metus. Mauris non sem leo. Quisque lacinia dolor a lectus commodo gravida. Curabitur sed suscipit tortor, non pretium turpis. Quisque imperdiet et tortor et lacinia. Donec ut rhoncus magna.
+<hr />
 
-    Vestibulum sodales lacinia vehicula. Ut mollis tempus finibus. Vestibulum nec neque at leo ornare tempus consectetur id est. Nulla et finibus arcu. Nunc tincidunt velit sed nibh aliquet suscipit. Suspendisse feugiat euismod laoreet. Sed condimentum massa a ex pharetra, sed rhoncus leo pulvinar.
-
-    Etiam sagittis mattis nisi vel porta. Nam vel rutrum dolor, eu condimentum nisl. Mauris ut lobortis nunc. Donec quis quam nec tellus egestas dignissim vitae ac libero. Morbi semper nibh non metus blandit, sed ultrices odio consequat. Maecenas convallis commodo dui nec scelerisque. Etiam lobortis lorem lectus. Quisque fringilla egestas luctus. Aliquam erat volutpat. Duis sem turpis, malesuada vitae sem non, faucibus ultrices purus. Duis non sem nec orci facilisis lobortis.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac ex viverra, consequat risus id, sodales nisl. Duis euismod, felis sit amet ullamcorper auctor, dolor nunc venenatis urna, vitae ultrices tortor leo aliquet sapien. Cras vel consectetur velit. Nunc id turpis vel sem pellentesque mollis. Vivamus eu arcu diam. Suspendisse mollis, urna dictum accumsan consequat, lorem est feugiat mauris, euismod interdum neque lacus vel est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque consequat lorem vitae augue faucibus molestie. Etiam sollicitudin lacus eu velit scelerisque, ut facilisis magna consectetur. Nam non nunc erat. Maecenas hendrerit venenatis lacus, vitae sagittis justo iaculis at.
-
-    Aliquam erat volutpat. Pellentesque scelerisque consequat odio ultrices sollicitudin. Nam in imperdiet elit. Praesent in hendrerit nisi. Nulla venenatis a neque sed tincidunt. Praesent sed quam ac quam laoreet finibus nec lobortis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas nisi lorem, ut vehicula purus rutrum sed. Cras aliquam enim quis lacus interdum, condimentum tincidunt sem dignissim. Nullam eu felis arcu. Pellentesque at vestibulum nulla, in auctor arcu. Proin id dolor molestie metus tincidunt scelerisque. Pellentesque tristique turpis sit amet tellus dignissim tempor. Praesent posuere lorem non orci blandit, quis tincidunt leo dapibus.
-
-    Proin fringilla cursus est id scelerisque. Donec non varius est, a mattis augue. Suspendisse sit amet odio felis. Etiam dictum, eros eget suscipit aliquet, lorem dolor lobortis augue, ut dignissim arcu nibh eget metus. Mauris non sem leo. Quisque lacinia dolor a lectus commodo gravida. Curabitur sed suscipit tortor, non pretium turpis. Quisque imperdiet et tortor et lacinia. Donec ut rhoncus magna.
-
-    Vestibulum sodales lacinia vehicula. Ut mollis tempus finibus. Vestibulum nec neque at leo ornare tempus consectetur id est. Nulla et finibus arcu. Nunc tincidunt velit sed nibh aliquet suscipit. Suspendisse feugiat euismod laoreet. Sed condimentum massa a ex pharetra, sed rhoncus leo pulvinar.
-
-    Etiam sagittis mattis nisi vel porta. Nam vel rutrum dolor, eu condimentum nisl. Mauris ut lobortis nunc. Donec quis quam nec tellus egestas dignissim vitae ac libero. Morbi semper nibh non metus blandit, sed ultrices odio consequat. Maecenas convallis commodo dui nec scelerisque. Etiam lobortis lorem lectus. Quisque fringilla egestas luctus. Aliquam erat volutpat. Duis sem turpis, malesuada vitae sem non, faucibus ultrices purus. Duis non sem nec orci facilisis lobortis.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac ex viverra, consequat risus id, sodales nisl. Duis euismod, felis sit amet ullamcorper auctor, dolor nunc venenatis urna, vitae ultrices tortor leo aliquet sapien. Cras vel consectetur velit. Nunc id turpis vel sem pellentesque mollis. Vivamus eu arcu diam. Suspendisse mollis, urna dictum accumsan consequat, lorem est feugiat mauris, euismod interdum neque lacus vel est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque consequat lorem vitae augue faucibus molestie. Etiam sollicitudin lacus eu velit scelerisque, ut facilisis magna consectetur. Nam non nunc erat. Maecenas hendrerit venenatis lacus, vitae sagittis justo iaculis at.
-
-    Aliquam erat volutpat. Pellentesque scelerisque consequat odio ultrices sollicitudin. Nam in imperdiet elit. Praesent in hendrerit nisi. Nulla venenatis a neque sed tincidunt. Praesent sed quam ac quam laoreet finibus nec lobortis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas nisi lorem, ut vehicula purus rutrum sed. Cras aliquam enim quis lacus interdum, condimentum tincidunt sem dignissim. Nullam eu felis arcu. Pellentesque at vestibulum nulla, in auctor arcu. Proin id dolor molestie metus tincidunt scelerisque. Pellentesque tristique turpis sit amet tellus dignissim tempor. Praesent posuere lorem non orci blandit, quis tincidunt leo dapibus.
-
-    Proin fringilla cursus est id scelerisque. Donec non varius est, a mattis augue. Suspendisse sit amet odio felis. Etiam dictum, eros eget suscipit aliquet, lorem dolor lobortis augue, ut dignissim arcu nibh eget metus. Mauris non sem leo. Quisque lacinia dolor a lectus commodo gravida. Curabitur sed suscipit tortor, non pretium turpis. Quisque imperdiet et tortor et lacinia. Donec ut rhoncus magna.
-
-    Vestibulum sodales lacinia vehicula. Ut mollis tempus finibus. Vestibulum nec neque at leo ornare tempus consectetur id est. Nulla et finibus arcu. Nunc tincidunt velit sed nibh aliquet suscipit. Suspendisse feugiat euismod laoreet. Sed condimentum massa a ex pharetra, sed rhoncus leo pulvinar.
-
-    Etiam sagittis mattis nisi vel porta. Nam vel rutrum dolor, eu condimentum nisl. Mauris ut lobortis nunc. Donec quis quam nec tellus egestas dignissim vitae ac libero. Morbi semper nibh non metus blandit, sed ultrices odio consequat. Maecenas convallis commodo dui nec scelerisque. Etiam lobortis lorem lectus. Quisque fringilla egestas luctus. Aliquam erat volutpat. Duis sem turpis, malesuada vitae sem non, faucibus ultrices purus. Duis non sem nec orci facilisis lobortis.
-</p>
+<div>
+    <p class="text-center"><big>My Skills</big></p>
+</div>
+<div class="row">
+    <div class="col">
+        <p class="text-center"><big>Desktop Development</big></p>
+        <ul>
+            <li>.NET Framework</li>
+            <li>C#</li>
+            <li>WPF</li>
+            <li>Entity Framework</li>
+            <li>LINQ</li>
+            <li>Model-View-ViewModel (MVVM)</li>
+            <li>C++</li>
+        </ul>
+    </div>
+    <div class="col">
+        <p class="text-center"><big>Web Development</big></p>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>PHP</li>
+            <li>ASP.NET</li>
+            <li>Model-View-Controller (MVC)</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>Ajax</li>
+            <li>Bootstrap</li>
+        </ul>
+    </div>
+    <div class="col">
+        <p class="text-center"><big>Other Skills</big></p>
+        <ul>
+            <li>Oracle SQL</li>
+            <li>MS SQL Server</li>
+            <li>Git</li>
+            <li>Agile</li>
+            <li>Object-Oriented Programming</li>
+            <li>Visual Studio</li>
+            <li>Microsoft Office</li>
+            <li>Bilingual English/Russian</li>
+        </ul>
+    </div>
+</div>
