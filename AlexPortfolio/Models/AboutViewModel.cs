@@ -1,26 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Security.Principal;
+using System.Web;
 
 namespace AlexPortfolio.Models
 {
-    public class HomeContentViewModel
-    {
-        public string Greeting { get; set; }
-
-        public string Intro { get; set; }
-    }
-
-    public class ContactContentViewModel
-    {
-        public string HeaderText { get; set; }
-
-        public string Phone { get; set; }
-
-        public string Email { get; set; }
-    }
-
-    public class AboutContentViewModel
+    public class AboutViewModel : MasterViewModel
     {
         public string Summary { get; set; }
 
@@ -39,5 +25,10 @@ namespace AlexPortfolio.Models
         public List<string> OtherSkills { get; set; }
 
         public List<Tuple<string, string>> ContactInfo { get; set; }
+
+        public AboutViewModel(MenuType menuType, bool isAuthorized, IPrincipal user) : base(menuType, isAuthorized, user)
+        {
+
+        }
     }
 }

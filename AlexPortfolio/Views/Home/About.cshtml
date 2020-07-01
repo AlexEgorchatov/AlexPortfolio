@@ -1,10 +1,12 @@
-﻿@section AddToHead{
+﻿@model AlexPortfolio.Models.AboutViewModel
+
+@section AddToHead{
     <link href="@Url.Content("~/Content/portfolio-about.css")" rel="stylesheet" type="text/css" />
 }
 
 @*@section AddToFooter{
-    <script src="@Url.Content("~/Scripts/portfolio-home.js")"></script>
-}*@
+        <script src="@Url.Content("~/Scripts/portfolio-home.js")"></script>
+    }*@
 
 <div class="row">
     <div class="col-md-5 col-lg-4 col-xl-4 col-12">
@@ -12,32 +14,33 @@
     </div>
 
     <div class="col-md-7 col-lg-8 col-xl-8 col-12">
-        <div class="row">
-            <p>A computing science student from Vancouver Island University with two years of proven successful experience in software development. Recognized for performance excellence. Using .Net, WPF, Entity Framework, and MS SQL server developed and deployed the company’s inventory management system with 50.000+ items to replace an old EPDM solution. </p>
+        <div id="about-summary" class="row">
+            <p>@Model.Summary</p>
         </div>
-        <div class="row">
-            <div class="col-md-2">
-                <p>Address:</p>
-                <p>Phone:</p>
-                <p>Email:</p>
+
+        @foreach (var item in Model.ContactInfo)
+        {
+            <div class="row">
+                <div class="col-sm-2">
+                    <p><b>@item.Item1</b></p>
+                </div>
+                <div class="col-sm-10">
+                    <p>@item.Item2</p>
+                </div>
             </div>
-            <div class="col-md-10">
-                <p>387 Cariboo Drive, Nanaimo BC, Canada</p>
-                <p>1-250-618-67-78</p>
-                <p>alex.exorchatov@gmail.com</p>
-            </div>
-        </div>
+        }
+
         <div class="row">
             <div class="col">
                 <ul>
-                    <li><a href="https://www.facebook.com/profile.php?id=100000820661738" target="_blank"><span class="fa fa-facebook-square" aria-hidden="true">&nbsp;</span>Facebook</a></li>
-                    <li><a href="https://www.instagram.com/anotherfakesub/" target="_blank"><span class="fa fa-instagram" aria-hidden="true">&nbsp;</span>Instagram</a></li>
+                    <li><a href=@Model.FacebookLink target="_blank"><span class="fa fa-facebook-square" aria-hidden="true">&nbsp;</span>Facebook</a></li>
+                    <li><a href=@Model.InstagramLink target="_blank"><span class="fa fa-instagram" aria-hidden="true">&nbsp;</span>Instagram</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul>
-                    <li><a href="https://www.linkedin.com/in/alex-roch-686b7718a/" target="_blank"><span class="fa fa-linkedin-square" aria-hidden="true">&nbsp;</span>LinkedIn</a></li>
-                    <li><a href="https://github.com/AnotherFakeSub/" target="_blank"><span class="fa fa-github-square" aria-hidden="true">&nbsp;</span>GitHub</a></li>
+                    <li><a href=@Model.LinkedInLink target="_blank"><span class="fa fa-linkedin-square" aria-hidden="true">&nbsp;</span>LinkedIn</a></li>
+                    <li><a href=@Model.GitHubLink target="_blank"><span class="fa fa-github-square" aria-hidden="true">&nbsp;</span>GitHub</a></li>
                 </ul>
             </div>
         </div>
@@ -50,43 +53,31 @@
     <p class="text-center"><big>My Skills</big></p>
 </div>
 <div class="row">
-    <div class="col">
+    <div class="col-sm">
         <p class="text-center"><big>Desktop Development</big></p>
         <ul>
-            <li>.NET Framework</li>
-            <li>C#</li>
-            <li>WPF</li>
-            <li>Entity Framework</li>
-            <li>LINQ</li>
-            <li>Model-View-ViewModel (MVVM)</li>
-            <li>C++</li>
+            @foreach (var item in Model.DesktopSkills)
+            {
+                <li>@item</li>
+            }
         </ul>
     </div>
-    <div class="col">
+    <div class="col-sm">
         <p class="text-center"><big>Web Development</big></p>
         <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>PHP</li>
-            <li>ASP.NET</li>
-            <li>Model-View-Controller (MVC)</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-            <li>Ajax</li>
-            <li>Bootstrap</li>
+            @foreach (var item in Model.WebSkills)
+            {
+                <li>@item</li>
+            }
         </ul>
     </div>
-    <div class="col">
+    <div class="col-sm">
         <p class="text-center"><big>Other Skills</big></p>
         <ul>
-            <li>Oracle SQL</li>
-            <li>MS SQL Server</li>
-            <li>Git</li>
-            <li>Agile</li>
-            <li>Object-Oriented Programming</li>
-            <li>Visual Studio</li>
-            <li>Microsoft Office</li>
-            <li>Bilingual English/Russian</li>
+            @foreach (var item in Model.OtherSkills)
+            {
+                <li>@item</li>
+            }
         </ul>
     </div>
 </div>

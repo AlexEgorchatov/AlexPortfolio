@@ -1,7 +1,9 @@
 ﻿using AlexPortfolio.Data;
 using AlexPortfolio.Models;
+using Microsoft.Owin.BuilderProperties;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Dynamic;
 using System.Net;
@@ -44,7 +46,59 @@ namespace AlexPortfolio.Controllers
         [HttpGet]
         public ActionResult About()
         {
-            return View(new MasterViewModel(MenuType.About, Request.IsAuthenticated, HttpContext.User));
+            List<string> desktop = new List<string>()
+            {
+                ".NET Framework",
+                "C#",
+                "WPF",
+                "Entity Framework",
+                "LINQ",
+                "Model-View-ViewModel (MVVM)",
+                "C++"
+            };
+
+            List<string> web = new List<string>()
+            {
+                "HTML5",
+                "CSS3",
+                "PHP",
+                "ASP.NET",
+                "Model-View-Controller (MVC)",
+                "JavaScript",
+                "jQuery",
+                "Ajax",
+                "Bootstrap"
+            };
+
+            List<string> other = new List<string>()
+            {
+                "Oracle SQL",
+                "MS SQL Server",
+                "Git",
+                "Agile",
+                "Object-Oriented Programming",
+                "Visual Studio",
+                "Microsoft Office",
+                "Bilingual English/Russian"
+            };
+
+            return View(new AboutViewModel(MenuType.About, Request.IsAuthenticated, HttpContext.User)
+            {
+                Summary = "A computing science student from Vancouver Island University with two years of proven successful experience in software development. Recognized for performance excellence. Using .Net, WPF, Entity Framework, and MS SQL server developed and deployed the company’s inventory management system with 50.000+ items to replace an old EPDM solution.",
+                FacebookLink = "https://www.facebook.com/profile.php?id=100000820661738",
+                InstagramLink = "https://www.instagram.com/anotherfakesub/",
+                LinkedInLink = "https://www.linkedin.com/in/alex-roch-686b7718a/",
+                GitHubLink = "https://github.com/AnotherFakeSub/",
+                DesktopSkills = desktop,
+                WebSkills = web,
+                OtherSkills = other,
+                ContactInfo = new List<Tuple<string, string>>()
+                {
+                    new Tuple<string, string>("Address", "387 Cariboo Drive, Nanaimo BC, Canada"),
+                    new Tuple<string, string>("Phone", "1-250-618-67-78"),
+                    new Tuple<string, string>("Email", "alex.exorchatov@gmail.com"),
+                }
+            });
         }
 
         [HttpGet]
