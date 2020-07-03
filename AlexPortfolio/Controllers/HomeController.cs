@@ -101,6 +101,13 @@ namespace AlexPortfolio.Controllers
             });
         }
 
+        //[HttpPost] FINISH LATER
+        //[Authorize]
+        //public async Task<JsonResult> UpdateAbout(AboutContentViewModel aboutContent)
+        //{
+
+        //}
+
         [HttpGet]
         public ActionResult Contact()
         {

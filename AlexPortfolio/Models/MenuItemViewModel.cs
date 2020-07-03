@@ -37,7 +37,7 @@ namespace AlexPortfolio.Models
                     break;
 
                 case MenuType.Work:
-                    Href = "#";
+                    Href = "/Work";
                     Title = "Work Experience";
                     Icon = "fa fa-briefcase fa-fw fa-lg";
                     break;

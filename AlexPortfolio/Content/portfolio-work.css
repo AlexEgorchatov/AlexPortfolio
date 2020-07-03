@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.work-picture {
+    background-image: url(Pictures/alex.jpg);
+    /*    background-position: center center;*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    /*    box-shadow: 0 0 5px 5px white inset;
+    border-radius: 50%;*/
+    margin: 0px 10px;
+/*    padding-top: 100%;*/
+    width: 100px;
+}
+
+.work-carousel-item {
+    background-image: url(Pictures/alex.jpg);
+    width: 200px;
+    height: 200px;
+}

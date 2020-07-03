@@ -40,4 +40,11 @@ namespace AlexPortfolio.Models
 
         public List<Tuple<string, string>> ContactInfo { get; set; }
     }
+
+    public class WorkContentViewModel
+    {
+        public string Company { get; set; }
+
+        public string Position { get; set; }
+    }
 }
