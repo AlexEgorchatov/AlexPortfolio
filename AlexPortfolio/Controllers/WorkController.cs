@@ -10,9 +10,17 @@ namespace AlexPortfolio.Controllers
     public class WorkController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Work()
         {
-            return View(new MasterViewModel(MenuType.Index, Request.IsAuthenticated, HttpContext.User)
+            return View(new MasterViewModel(MenuType.Work, Request.IsAuthenticated, HttpContext.User)
+            {
+
+            });
+        }
+
+        public ActionResult JobDetails()
+        {
+            return View(new MasterViewModel(MenuType.Work, Request.IsAuthenticated, HttpContext.User)
             {
 
             });

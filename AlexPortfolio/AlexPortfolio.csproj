@@ -198,6 +198,7 @@
     <Content Include="Content\portfolio-about.css" />
     <Content Include="Content\portfolio-contact.css" />
     <Content Include="Content\portfolio-home.css" />
+    <Content Include="Content\portfolio-work-details.css" />
     <Content Include="Content\portfolio-work.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -234,6 +235,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\portfolio-home.js" />
     <Content Include="Scripts\portfolio-master.js" />
+    <Content Include="Scripts\portfolio-work-details.js" />
     <Content Include="Scripts\portfolio-work.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -249,7 +251,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Work\Index.cshtml" />
+    <Content Include="Views\Work\Work.cshtml" />
+    <Content Include="Views\Work\JobDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -61,6 +61,19 @@
 
     <div class="container body-content">
         <div class="dashboard">
+            @if ((ViewContext.RouteData.Values["action"]).ToString() == "JobDetails")
+            {
+                <div class="float-left">
+                    <a href="~/Work/Work" class="btn btn-secondary"><span class="fa fa-arrow-left" aria-hidden="true"></span>&nbsp; Back</a>
+                </div>
+            }
+            @if ((ViewContext.RouteData.Values["action"]).ToString() == "EducationDetails")
+            {
+                <div class="float-left">
+                    <a href="~/Education/Education" class="btn btn-secondary"><span class="fa fa-arrow-left" aria-hidden="true"></span>&nbsp; Back</a>
+                </div>
+            }
+
             <div class="float-right">
                 <a id="edit-link" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="collapse" data-target=".editor-collapse"></a>
                 <a id="cancel-link" class="dashboard-apply-changes fa fa-times fa-lg" aria-hidden="true" data-toggle="collapse" data-target=".editor-collapse"></a>

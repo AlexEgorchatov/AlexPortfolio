@@ -1,11 +1,16 @@
 ﻿body {
 }
 
-.work-picture {
+.work-carousel-item {
     background-image: url(Pictures/alex.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
     padding-top: 100%;
+}
+
+#work-carousel {
+    width: 40rem;
+    margin: 0 10px;
 }
