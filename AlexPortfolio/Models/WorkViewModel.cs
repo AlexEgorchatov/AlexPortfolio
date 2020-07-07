@@ -8,13 +8,11 @@ namespace AlexPortfolio.Models
 {
     public class WorkViewModel : MasterViewModel
     {
-        string Company { get; set; }
-
-        string Position { get; set; }
+        public List<JobViewModel> Jobs { get; set; }
 
         public WorkViewModel(MenuType menuType, bool isAuthorized, IPrincipal user) : base(menuType, isAuthorized, user)
         {
-
+            Jobs = new List<JobViewModel>();
         }
     }
 }

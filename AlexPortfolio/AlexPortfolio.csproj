@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="Data\DBHelper.cs" />
@@ -181,6 +182,8 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobDetailsViewModel.cs" />
+    <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
     <Compile Include="Models\MenuItemViewModel.cs" />
     <Compile Include="Models\SendEmailViewModel.cs" />
@@ -253,6 +256,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Work\Work.cshtml" />
     <Content Include="Views\Work\JobDetails.cshtml" />
+    <Content Include="Views\Education\Education.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

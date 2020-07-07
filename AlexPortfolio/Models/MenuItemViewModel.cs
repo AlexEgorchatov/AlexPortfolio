@@ -43,7 +43,7 @@ namespace AlexPortfolio.Models
                     break;
 
                 case MenuType.Education:
-                    Href = "#";
+                    Href = "/Education/Education";
                     Title = "Education";
                     Icon = "fa fa-graduation-cap fa-fw fa-lg";
                     break;

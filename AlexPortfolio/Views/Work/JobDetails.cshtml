@@ -1,74 +1,44 @@
-﻿@section AddToHead{
+﻿@model AlexPortfolio.Models.JobDetailsViewModel
+
+@section AddToHead{
     <link href="@Url.Content("~/Content/portfolio-work-details.css")" rel="stylesheet" type="text/css" />
 }
 
 @*@section AddToFooter{
-    <script src="@Url.Content("~/Scripts/portfolio-work.js")"></script>
-}*@
+        <script src="@Url.Content("~/Scripts/portfolio-work.js")"></script>
+    }*@
 
 <div id="work-job-details">
-    <p><b>Company Name</b></p>
-    <p><b>Position: </b> some position (part/full time)</p>
-    <p><b>Duration: </b> X years (month XXXX - month YYYY)</p>
-    <p><b>Address: </b> company address</p>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+    <p><b>@Model.Company</b></p>
+    <p><b>Position: </b>@Model.Position (@Model.Type)</p>
+    <p><b>Duration: </b>@Model.Duration days (@Model.StartDate - @Model.CompletionDate)</p>
+    <p><b>Address: </b>@Model.Address</p>
+    <ul>
+        @foreach (var item in Model.DescriptionBulletPoints)
+        {
+            <li>@item</li>
+        }
+    </ul>
     <div class="row d-flex justify-content-center">
         <div id="work-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <ol class="carousel-indicators">
-                <li data-target="#work-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#work-carousel" data-slide-to="1"></li>
-                <li data-target="#work-carousel" data-slide-to="2"></li>
-                <li data-target="#work-carousel" data-slide-to="3"></li>
-                <li data-target="#work-carousel" data-slide-to="4"></li>
-                <li data-target="#work-carousel" data-slide-to="5"></li>
+                @for (int i = 0; i < Model.Pictures.Count; i++)
+                {
+                    <li data-target="#work-carousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                }
             </ol>
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>1st item</h5>
-                        <p>It shows the first item</p>
+                @foreach (var item in Model.Pictures)
+                {
+                    <div class="carousel-item @(Model.Pictures.First() == item ? "active" : "")">
+                        <div class="work-carousel-item" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Item1))"></div>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@item.Item2</h5>
+                            <p>@item.Item3</p>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>2nd item</h5>
-                        <p>It shows the second item</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>3rd item</h5>
-                        <p>It shows the third item</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>4th item</h5>
-                        <p>It shows the fourth item</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>5th item</h5>
-                        <p>It shows the fifth item</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="work-carousel-item"></div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>6th item</h5>
-                        <p>It shows the sixth item</p>
-                    </div>
-                </div>
+                }
             </div>
 
             <a class="carousel-control-prev" href="#work-carousel" role="button" data-slide="prev">
