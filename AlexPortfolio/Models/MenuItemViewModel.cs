@@ -49,13 +49,13 @@ namespace AlexPortfolio.Models
                     break;
 
                 case MenuType.Projects:
-                    Href = "#";
+                    Href = "/Projects/Projects";
                     Title = "Projects";
                     Icon = "fa fa-github-square fa-fw fa-lg";
                     break;
 
                 case MenuType.Hobbies:
-                    Href = "#";
+                    Href = "/Hobbies/Hobbies";
                     Title = "Hobbies";
                     Icon = "fa fa-thumbs-up fa-fw fa-lg";
                     break;

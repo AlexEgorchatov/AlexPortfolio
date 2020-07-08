@@ -1,4 +1,6 @@
-﻿@section AddToHead{
+﻿@model AlexPortfolio.Models.EducationViewModel
+
+@section AddToHead{
     <link href="@Url.Content("~/Content/portfolio-education.css")" rel="stylesheet" type="text/css" />
 }
 
@@ -7,15 +9,15 @@
 }
 
 <div class="d-flex flex-wrap justify-content-center">
-    @foreach (var item in Model.Jobs)
+    @foreach (var item in Model.EducationItems)
     {
         <div class="p-2">
             <div class="card mx-auto">
-                <div class="card-img-top work-picture" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Picture))"></div>
+                <div class="card-img-top education-picture" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Picture))"></div>
                 <div class="card-body">
-                    <h5 class="card-title">@item.Company</h5>
-                    <h6 class="card-subtitle">@item.Position</h6>
-                    <a href="@Url.Action("JobDetails", "Work", new { jobId = item.JobId})" class="btn btn-primary">Details</a>
+                    <h5 class="card-title">@item.University</h5>
+                    <h6 class="card-subtitle">@item.Program</h6>
+                    <a href="@Url.Action("EducationDetails", "Education", new { educationId = item.EducationId})" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>

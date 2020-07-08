@@ -164,7 +164,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\HobbiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="Data\DBHelper.cs" />
     <Compile Include="Data\PortfolioDataContext.designer.cs">
@@ -179,6 +181,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\ContentViewModels.cs" />
+    <Compile Include="Models\EducationDetailsViewModel.cs" />
+    <Compile Include="Models\EducationItemViewModel.cs" />
+    <Compile Include="Models\EducationViewModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -200,6 +205,8 @@
     <Content Include="Content\Pictures\alex.jpg" />
     <Content Include="Content\portfolio-about.css" />
     <Content Include="Content\portfolio-contact.css" />
+    <Content Include="Content\portfolio-education-details.css" />
+    <Content Include="Content\portfolio-education.css" />
     <Content Include="Content\portfolio-home.css" />
     <Content Include="Content\portfolio-work-details.css" />
     <Content Include="Content\portfolio-work.css" />
@@ -236,6 +243,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\portfolio-education-details.js" />
+    <Content Include="Scripts\portfolio-education.js" />
     <Content Include="Scripts\portfolio-home.js" />
     <Content Include="Scripts\portfolio-master.js" />
     <Content Include="Scripts\portfolio-work-details.js" />
@@ -257,6 +266,9 @@
     <Content Include="Views\Work\Work.cshtml" />
     <Content Include="Views\Work\JobDetails.cshtml" />
     <Content Include="Views\Education\Education.cshtml" />
+    <Content Include="Views\Education\EducationDetails.cshtml" />
+    <Content Include="Views\Hobbies\Hobbies.cshtml" />
+    <Content Include="Views\Projects\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

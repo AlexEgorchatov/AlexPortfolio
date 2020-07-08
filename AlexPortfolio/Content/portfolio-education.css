@@ -1,7 +1,8 @@
 ﻿body {
 }
 
-.work-carousel-item {
+.education-picture {
+    background-image: url(Pictures/alex.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -9,11 +10,10 @@
     padding-top: 100%;
 }
 
-#work-carousel {
-    width: 40rem;
-    margin: 0 10px;
+.card-subtitle {
+    margin-bottom: 5px;
 }
 
-#job-details-body-container {
-    margin-top: 10px;
+.card {
+    width: 18rem;
 }

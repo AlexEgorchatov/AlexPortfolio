@@ -43,7 +43,7 @@ namespace AlexPortfolio.Models
 
     public class WorkContentViewModel
     {
-        public List<JobViewModel> Jobs { get; set; }
+        public List<JobContentViewModel> Jobs { get; set; }
 
     }
 
@@ -77,5 +77,36 @@ namespace AlexPortfolio.Models
         public List<string> DescriptionBulletPoints { get; set; }
 
         public List<Tuple<string, string, string>> Pictures { get; set; }
+    }
+
+    public class EducationContentViewModel
+    {
+        public List<EducationItemContentViewModel> EducationItems {get; set;}
+    }
+
+    public class EducationItemContentViewModel
+    {
+        public int EducationId { get; set; }
+
+        public string Picture { get; set; }
+
+        public string University { get; set; }
+
+        public string Program { get; set; }
+    }
+
+    public class EducationDetailsContentViewModel
+    {
+        public string University { get; set; }
+
+        public string UniversityLink { get; set; }
+
+        public string Program { get; set; }
+
+        public string StartDate { get; set; }
+
+        public string CompletionDate { get; set; }
+
+        public List<string> Courses { get; set; }
     }
 }
