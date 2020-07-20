@@ -12,7 +12,7 @@
         data: JSON.stringify({ contactContent: contactContentViewModel }),
         success: (data) => {
             if (data == "") {
-                $('#signup-modal').modal('show');
+                $('#signup-error-modal').modal('show');
             } else {
                 var object = JSON.parse(data);
                 if (object.result == "success") {

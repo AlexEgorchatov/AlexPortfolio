@@ -17,3 +17,11 @@
 #education-details-body-container {
     margin-top: 10px;
 }
+
+.arrow {
+    color: black;
+}
+
+.education-details-point {
+    font-size: 70%;
+}

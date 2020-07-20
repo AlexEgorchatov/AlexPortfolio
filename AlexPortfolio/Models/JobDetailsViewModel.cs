@@ -10,6 +10,8 @@ namespace AlexPortfolio.Models
     {
         public string Company { get; set; }
 
+        public string CompanyLink { get; set; }
+
         public string Position { get; set; }
 
         public string Type { get; set; }
@@ -24,7 +26,9 @@ namespace AlexPortfolio.Models
 
         public List<string> DescriptionBulletPoints { get; set; }
 
-        public List<Tuple<string, string, string>> Pictures { get; set; }
+        public string PicturesDescription { get; set; }
+
+        public List<string> Pictures { get; set; }
 
         public JobDetailsViewModel(MenuType menuType, bool isAuthorized, IPrincipal user) : base(menuType, isAuthorized, user)
         {

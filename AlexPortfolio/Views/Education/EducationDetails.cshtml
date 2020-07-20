@@ -12,10 +12,18 @@
     <p><b>@Model.University</b> <a href="@Model.UniversityLink" target="_blank">(@Model.UniversityLink)</a></p>
     <p><b>Program: </b>@Model.Program (@Model.StartDate-@Model.CompletionDate)</p>
     <p><b>List of courses</b></p>
-    <div class="d-flex flex-wrap justify-content-start">
-        @foreach (var item in Model.Courses)
-        {
-            <div class="p-2">@item</div>
-        }
+    <div class="row">
+        <div class="col-sm">
+            @for (int i = 0; i < Model.Courses.Count / 2; i++)
+            {
+                <div><span class="education-details-point">&#9898;</span>&nbsp;@Model.Courses[i]</div>
+            }
+        </div>
+        <div class="col-sm">
+            @for (int i = (Model.Courses.Count / 2); i < Model.Courses.Count; i++)
+            {
+                <div><span class="education-details-point">&#9898;</span>&nbsp;@Model.Courses[i]</div>
+            }
+        </div>
     </div>
 </div>

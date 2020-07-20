@@ -1,0 +1,31 @@
+﻿body {
+}
+
+.job-details-carousel-item {
+/*    background-position: center center;*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    padding-top: 56%;
+}
+
+#job-details-carousel {
+    width: 100%;
+    margin: 0 10px;
+}
+
+.job-details-arrow {
+    background-color: gray;
+}
+
+#job-details-body-container {
+    margin-top: 10px;
+}
+
+.job-details-indicator {
+    background-color: gray !important;
+}
+
+.job-details-indicator.active {
+    background-color: lightgray !important;
+}

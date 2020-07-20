@@ -23,3 +23,27 @@
         display: none;
     }
 }
+
+#about-facebook {
+    background: -webkit-linear-gradient(#19aeff, #0062e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#about-instagram {
+    color: orangered;
+}
+
+#about-instagram-logo {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+#about-linkedin {
+    color: #0274b3;
+}
+
+#about-github {
+    color: #323131
+}

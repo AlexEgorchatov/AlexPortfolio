@@ -1,15 +1,15 @@
 ﻿@model AlexPortfolio.Models.JobDetailsViewModel
 
 @section AddToHead{
-    <link href="@Url.Content("~/Content/portfolio-work-details.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/portfolio-job-details.css")" rel="stylesheet" type="text/css" />
 }
 
-@*@section AddToFooter{
-        <script src="@Url.Content("~/Scripts/portfolio-work.js")"></script>
-    }*@
+@section AddToFooter{
+    <script src="@Url.Content("~/Scripts/portfolio-job-details.js")"></script>
+}
 
 <div id="job-details-body-container">
-    <p><b>@Model.Company</b></p>
+    <p><b>@Model.Company</b><a href="@Model.CompanyLink" target="_blank"> @Model.CompanyLink</a></p>
     <p><b>Position: </b>@Model.Position (@Model.Type)</p>
     <p><b>Duration: </b>@Model.Duration days (@Model.StartDate - @Model.CompletionDate)</p>
     <p><b>Address: </b>@Model.Address</p>
@@ -19,12 +19,13 @@
             <li>@item</li>
         }
     </ul>
+    <p>@Model.PicturesDescription</p>
     <div class="row d-flex justify-content-center">
-        <div id="work-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div id="job-details-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <ol class="carousel-indicators">
                 @for (int i = 0; i < Model.Pictures.Count; i++)
                 {
-                    <li data-target="#work-carousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                    <li data-target="#job-details-carousel" data-slide-to="@i" class="job-details-indicator@(i == 0 ? " active" : "")"></li>
                 }
             </ol>
 
@@ -32,23 +33,23 @@
                 @foreach (var item in Model.Pictures)
                 {
                     <div class="carousel-item @(Model.Pictures.First() == item ? "active" : "")">
-                        <div class="work-carousel-item" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Item1))"></div>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>@item.Item2</h5>
-                            <p>@item.Item3</p>
-                        </div>
+                        <div class="job-details-carousel-item" style="background-image: url(@Url.Content("../Content/Pictures/" + @item))"></div>
                     </div>
                 }
             </div>
 
-            <a class="carousel-control-prev" href="#work-carousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#work-carousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            @if (Model.Pictures.Any())
+            {
+                <a class="arrow carousel-control-prev" href="#job-details-carousel" role="button" data-slide="prev">
+                    <span id="job-details-image-prev" class="carousel-control-prev-icon job-details-arrow" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="arrow carousel-control-next" href="#job-details-carousel" role="button" data-slide="next">
+                    <span id="job-details-image-next" class="carousel-control-next-icon job-details-arrow" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            }
+
         </div>
     </div>
 </div>
