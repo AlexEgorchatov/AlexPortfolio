@@ -149,18 +149,18 @@ namespace AlexPortfolio.Controllers
                 {
                     var message = new MailMessage();
                     message.To.Add(new MailAddress("alex.exorchatov@gmail.com"));
-                    message.From = new MailAddress(email.Sender);
+                    message.From = new MailAddress("john.daylight.doen@gmail.com");
                     message.Subject = email.Subject;
-                    message.Body = email.Message;
+                    message.Body = $"A new email from {email.Sender}\n" + "Message:\n\n" + email.Message;
 
-                    var credentials = new NetworkCredential(message.From.Address, "Ukjccbz*Cnhtkjr");
+                    var credentials = new NetworkCredential(message.From.Address, "Ukjccbz8Cnhtkjr");
 
                     SmtpClient client = new SmtpClient
                     {
                         Host = "smtp.gmail.com",
                         Port = 587,
+                        Credentials = credentials,
                         EnableSsl = true,
-                        Credentials = credentials
                     };
 
                     client.Send(message);

@@ -18,8 +18,13 @@
     transform: translate(0%, -50%);
 }
 
-#contact-send-email {
+#contact-send-email-footer{
+    display: inline-flex;
+}
 
+#contact-send-email-confirm {
+    margin-right: 20px;
+    color: forestgreen;
 }
 
 #contact-send-email-message {

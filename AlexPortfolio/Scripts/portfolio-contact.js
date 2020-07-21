@@ -62,7 +62,14 @@ $('#contact-send-email').on('click', () => {
                 } else {
                     var object = JSON.parse(data);
                     if (object.result == "success") {
-
+                        $('#contact-send-email-confirm').text('The email was sent');
+                        $('.contact-send-email-input').each(function () {
+                            $this = $(this);
+                            $this.val('');
+                        });
+                        setTimeout(function () {
+                            $('#contact-send-email-confirm').text('');
+                        }, 5000);
                     } else {
                         $('#contact-email-error').text(object.error);
                         $('#contact-send-email-input').addClass('is-invalid');
