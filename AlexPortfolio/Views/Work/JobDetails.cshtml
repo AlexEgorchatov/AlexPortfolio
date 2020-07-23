@@ -11,7 +11,7 @@
 <div id="job-details-body-container">
     <p><b>@Model.Company</b><a href="@Model.CompanyLink" target="_blank"> @Model.CompanyLink</a></p>
     <p><b>Position: </b>@Model.Position (@Model.Type)</p>
-    <p><b>Duration: </b>@Model.Duration days (@Model.StartDate - @Model.CompletionDate)</p>
+    <p><b>Duration: </b>@Model.Duration (@Model.StartDate - @Model.CompletionDate)</p>
     <p><b>Address: </b>@Model.Address</p>
     <ul>
         @foreach (var item in Model.DescriptionBulletPoints)

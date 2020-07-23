@@ -159,10 +159,12 @@ namespace AlexPortfolio.Controllers
                     {
                         Host = "smtp.gmail.com",
                         Port = 587,
-                        Credentials = credentials,
+                        //Credentials = credentials,
+                        UseDefaultCredentials = false,
                         EnableSsl = true,
                     };
 
+                    client.Credentials = credentials;
                     client.Send(message);
 
                     respond.result = "success";

@@ -61,7 +61,7 @@ namespace AlexPortfolio.Controllers
                         "Developed algorithms for fast acquisition and manipulating large data (more than 50.000 DB records at once)",
                         "Regularly consulted with customers on the project development status, new features, and software related issues"
                     };
-                    jobDetails.PicturesDescription = "Unfortunately, because of Terms of Conduct, I cannot provide the source code of this application.";
+                    jobDetails.PicturesDescription = "According to the Terms of Conduct, the source code of this application is intellectual property of the company.";
                     jobDetails.Pictures = new List<string>()
                     {
                         "Work/Inuktun/main-screen.png",

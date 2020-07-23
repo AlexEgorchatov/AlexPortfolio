@@ -24,7 +24,7 @@ namespace AlexPortfolio.Controllers
                 EducationId = 1,
                 Picture = "Education/FESTU/festu-logo.png",
                 University = "Far Eastern Transport State University",
-                Program = "Computer Science"
+                Program = "Information Technology"
             };
 
             education.EducationItems.Add(educationItem1);

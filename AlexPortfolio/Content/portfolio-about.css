@@ -3,14 +3,11 @@
 }
 
 #about-alex {
-    background-image: url(Pictures/alex.jpg);
+    background-image: url(Pictures/alex-about.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
-    box-shadow: 0 0 5px 5px white inset;
-    border-radius: 50%;
-    margin: 0 auto;
     padding-top: 100%;
 }
 

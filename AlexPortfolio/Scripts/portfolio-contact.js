@@ -41,7 +41,7 @@ $("#contact-send-email-input").keyup(function () {
     $this.text('');
 });
 
-$('#contact-send-email').on('click', () => {
+$('#contact-send-email').on('click', function () {
     var $form = $('#contact-email-form');
     if ($form.get(0).checkValidity()) {
 
@@ -51,6 +51,7 @@ $('#contact-send-email').on('click', () => {
             Message: $('#contact-send-email-message').val()
         };
 
+        $('#contact-send-email').prop('disabled', true);
         $.ajax({
             type: "POST",
             url: "SendEmail",
@@ -75,11 +76,14 @@ $('#contact-send-email').on('click', () => {
                         $('#contact-send-email-input').addClass('is-invalid');
                     }
                 }
-                error: (jqXhr, status, error) => {
-                    var error = "jqXhr status: " + jqXhr.status + " jqXhr status text: " + jqXhr.statusText + " | status: " + status + " | error: " + error;
-                    $('#error-text').text(error);
-                    $('#error-modal').modal('show');
-                }
+            },
+            error: (jqXhr, status, error) => {
+                var error = "jqXhr status: " + jqXhr.status + " jqXhr status text: " + jqXhr.statusText + " | status: " + status + " | error: " + error;
+                $('#error-text').text(error);
+                $('#error-modal').modal('show');
+            },
+            complete: () => {
+                $('#contact-send-email').prop('disabled', false);
             }
         });
     } else {

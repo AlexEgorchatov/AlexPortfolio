@@ -19,3 +19,9 @@
     margin: 0 auto;
     padding-top: 100%;
 }
+
+@media (max-width: 768px) {
+    #home-content {
+        margin-bottom: 50px;
+    }
+}

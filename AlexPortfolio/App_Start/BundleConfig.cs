@@ -13,10 +13,14 @@ namespace AlexPortfolio
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/font-awesome.css",
-                "~/Content/bootstrap.css",
+            bundles.Add(new StyleBundle("~/Content/css/portfolio").Include(
                 "~/Content/portfolio-master.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/bootstrap").Include(
+                "~/Content/bootstrap.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/font-awesome").Include(
+                "~/Content/font-awesome.css"));    
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
@@ -27,6 +31,9 @@ namespace AlexPortfolio
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/popper.min.js",
                 "~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/popper").Include(
+                "~/Scripts/popper.min.js"));                                 
 
             bundles.Add(new ScriptBundle("~/bundles/portfolio").Include(
                 "~/Scripts/portfolio-master.js"));
