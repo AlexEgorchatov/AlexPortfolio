@@ -198,6 +198,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -243,6 +247,8 @@
       <DependentUpon>PortfolioDataContext.dbml</DependentUpon>
     </None>
     <None Include="Properties\PublishProfiles\AlexPortfolio - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\portfolio-contact.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -284,7 +290,6 @@
     <Content Include="Views\Projects\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>

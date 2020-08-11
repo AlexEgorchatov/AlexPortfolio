@@ -34,7 +34,7 @@ $('#login-submit').on('click', () => {
 
         $.ajax({
             type: "POST",
-            url: "/Account/Login",
+            url: "Account/Login",
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ loginInfo: loginViewModel }),
             success: (data) => {
@@ -110,7 +110,8 @@ $('#signup-submit').on('click', () => {
                 }
             },
             error: (jqXhr, status, error) => {
-                //alert("jqXhr status: " + jqXhr.status + " | status: " + status + " | error: " + error);
+                var error = "jqXhr status: " + jqXhr.status + " jqXhr status text: " + jqXhr.statusText + " | status: " + status + " | error: " + error;
+                $('#error-text').text(error);
                 $('#error-modal').modal('show');
             }
         });
