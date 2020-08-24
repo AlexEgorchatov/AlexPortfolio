@@ -170,10 +170,10 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="Data\DBHelper.cs" />
-    <Compile Include="Data\PortfolioDataContext.designer.cs">
+    <Compile Include="Data\Portfolio.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PortfolioDataContext.dbml</DependentUpon>
+      <DependentUpon>Portfolio.dbml</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,13 +234,13 @@
     <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Fonts\FontAwesome.otf" />
     <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Data\PortfolioDataContext.dbml">
+    <Content Include="Data\Portfolio.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>PortfolioDataContext.designer.cs</LastGenOutput>
+      <LastGenOutput>Portfolio.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Data\PortfolioDataContext.dbml.layout">
-      <DependentUpon>PortfolioDataContext.dbml</DependentUpon>
+    <None Include="Data\Portfolio.dbml.layout">
+      <DependentUpon>Portfolio.dbml</DependentUpon>
     </None>
     <None Include="Properties\PublishProfiles\AlexPortfolio - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

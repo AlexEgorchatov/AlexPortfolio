@@ -143,37 +143,58 @@ namespace AlexPortfolio.Controllers
         {
             dynamic respond = new ExpandoObject();
 
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        var message = new MailMessage();
+            //        message.To.Add(new MailAddress("alex.exorchatov@gmail.com"));
+            //        message.From = new MailAddress("john.daylight.doen@gmail.com");
+            //        message.Subject = email.Subject;
+            //        message.Body = $"A new email from {email.Sender}\n" + "Message:\n\n" + email.Message;
+
+            //        var credentials = new NetworkCredential(message.From.Address, "Ukjccbz8Cnhtkjr");
+
+            //        SmtpClient client = new SmtpClient
+            //        {
+            //            Host = "smtp.gmail.com",
+            //            Port = 587,
+            //            //Credentials = credentials,
+            //            UseDefaultCredentials = false,
+            //            EnableSsl = true,
+            //        };
+
+            //        client.Credentials = credentials;
+            //        client.Send(message);
+
+            //        respond.result = "success";
+            //        respond.error = "";
+
+            //        return Json(JsonConvert.SerializeObject(respond));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    respond.result = "error";
+            //    respond.error = ex.Message;
+            //}
+
             try
             {
                 if (ModelState.IsValid)
                 {
                     var message = new MailMessage();
-                    message.To.Add(new MailAddress("alex.exorchatov@gmail.com"));
-                    message.From = new MailAddress("john.daylight.doen@gmail.com");
+                    message.From = new MailAddress(email.Sender);
                     message.Subject = email.Subject;
-                    message.Body = $"A new email from {email.Sender}\n" + "Message:\n\n" + email.Message;
+                    message.Body = email.Message;
 
-                    var credentials = new NetworkCredential(message.From.Address, "Ukjccbz8Cnhtkjr");
-
-                    SmtpClient client = new SmtpClient
-                    {
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        //Credentials = credentials,
-                        UseDefaultCredentials = false,
-                        EnableSsl = true,
-                    };
-
-                    client.Credentials = credentials;
-                    client.Send(message);
+                    DBHelper.SendEmail(message);
 
                     respond.result = "success";
                     respond.error = "";
-
-                    return Json(JsonConvert.SerializeObject(respond));
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 respond.result = "error";
                 respond.error = ex.Message;

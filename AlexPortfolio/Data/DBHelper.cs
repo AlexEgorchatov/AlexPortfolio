@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Net.Mail;
 
 namespace AlexPortfolio.Data
 {
@@ -13,14 +14,14 @@ namespace AlexPortfolio.Data
         {
             try
             {
-                using (var dc = new PortfolioDataContext())
+                using (var db = new PortfolioDataContext())
                 {
-                    dc.PageContents.InsertOnSubmit(new PageContent()
+                    db.PageContents.InsertOnSubmit(new PageContent()
                     {
                         ContentType = (int)MenuType.Index,
                         Content = JsonConvert.SerializeObject(content)
                     });
-                    dc.SubmitChanges();
+                    db.SubmitChanges();
 
                     return content;
                 }
@@ -187,6 +188,31 @@ namespace AlexPortfolio.Data
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public static void SendEmail(MailMessage email)
+        {
+            try
+            {
+                using (var db = new PortfolioDataContext())
+                {
+                    InboxMessage message = new InboxMessage()
+                    {
+                        MessageFrom = email.From.ToString(),
+                        Subject = email.Subject,
+                        Message = email.Body,
+                        IsChecked = false,
+                        Date = DateTime.Now
+                    };
+
+                    db.InboxMessages.InsertOnSubmit(message);
+                    db.SubmitChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
 

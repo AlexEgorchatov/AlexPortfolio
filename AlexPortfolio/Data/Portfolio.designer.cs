@@ -33,6 +33,9 @@ namespace AlexPortfolio.Data
     partial void InsertPageContent(PageContent instance);
     partial void UpdatePageContent(PageContent instance);
     partial void DeletePageContent(PageContent instance);
+    partial void InsertInboxMessage(InboxMessage instance);
+    partial void UpdateInboxMessage(InboxMessage instance);
+    partial void DeleteInboxMessage(InboxMessage instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -70,6 +73,14 @@ namespace AlexPortfolio.Data
 			get
 			{
 				return this.GetTable<PageContent>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InboxMessage> InboxMessages
+		{
+			get
+			{
+				return this.GetTable<InboxMessage>();
 			}
 		}
 	}
@@ -159,6 +170,188 @@ namespace AlexPortfolio.Data
 					this._Content = value;
 					this.SendPropertyChanged("Content");
 					this.OnContentChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InboxMessages")]
+	public partial class InboxMessage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _MessageFrom;
+		
+		private string _Subject;
+		
+		private string _Message;
+		
+		private System.DateTime _Date;
+		
+		private bool _IsChecked;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnMessageFromChanging(string value);
+    partial void OnMessageFromChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnMessageChanging(string value);
+    partial void OnMessageChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnIsCheckedChanging(bool value);
+    partial void OnIsCheckedChanged();
+    #endregion
+		
+		public InboxMessage()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageFrom", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MessageFrom
+		{
+			get
+			{
+				return this._MessageFrom;
+			}
+			set
+			{
+				if ((this._MessageFrom != value))
+				{
+					this.OnMessageFromChanging(value);
+					this.SendPropertyChanging();
+					this._MessageFrom = value;
+					this.SendPropertyChanged("MessageFrom");
+					this.OnMessageFromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="VarChar(200)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(8000)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this.OnMessageChanging(value);
+					this.SendPropertyChanging();
+					this._Message = value;
+					this.SendPropertyChanged("Message");
+					this.OnMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime2 NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsChecked", DbType="Bit NOT NULL")]
+		public bool IsChecked
+		{
+			get
+			{
+				return this._IsChecked;
+			}
+			set
+			{
+				if ((this._IsChecked != value))
+				{
+					this.OnIsCheckedChanging(value);
+					this.SendPropertyChanging();
+					this._IsChecked = value;
+					this.SendPropertyChanged("IsChecked");
+					this.OnIsCheckedChanged();
 				}
 			}
 		}

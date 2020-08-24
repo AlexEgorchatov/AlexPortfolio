@@ -16,6 +16,10 @@
     white-space: normal;
 }
 
+center {
+    display: none;
+}
+
 .modal-open .fixed-top,
 .modal-open .fixed-bottom{
     padding-right: 16px !important;

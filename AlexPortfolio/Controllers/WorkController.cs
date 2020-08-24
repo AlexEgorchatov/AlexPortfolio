@@ -21,8 +21,8 @@ namespace AlexPortfolio.Controllers
             {
                 JobId = 0,
                 Picture = "Work/Inuktun/inuktun-logo.png",
-                Company = "Inuktun Services Ltd",
-                Position = "Software Engineer"
+                Company = "Eddyfi Technologies",
+                Position = "Software Designer"
             };
 
             var job2 = new JobViewModel
@@ -47,9 +47,9 @@ namespace AlexPortfolio.Controllers
             switch (jobId)
             {
                 case 0:
-                    jobDetails.Company = "Inuktun Services Ltd";
+                    jobDetails.Company = "Eddyfi Technologies";
                     jobDetails.CompanyLink = "(https://www.eddyfi.com/en)";
-                    jobDetails.Position = "Software Engineer";
+                    jobDetails.Position = "Software Designer";
                     jobDetails.Type = "Full Time/Part Time";
                     jobDetails.StartDate = "2018 May";
                     jobDetails.CompletionDate = "2019 September";
