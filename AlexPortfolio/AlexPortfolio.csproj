@@ -186,6 +186,9 @@
     <Compile Include="Models\EducationItemViewModel.cs" />
     <Compile Include="Models\EducationViewModel.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\HobbiesViewModel.cs" />
+    <Compile Include="Models\HobbyDetailsViewModel.cs" />
+    <Compile Include="Models\HobbyViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobDetailsViewModel.cs" />
@@ -219,6 +222,8 @@
     <Content Include="Content\portfolio-contact.css" />
     <Content Include="Content\portfolio-education-details.css" />
     <Content Include="Content\portfolio-education.css" />
+    <Content Include="Content\portfolio-hobbies.css" />
+    <Content Include="Content\portfolio-hobby-details.css" />
     <Content Include="Content\portfolio-home.css" />
     <Content Include="Content\portfolio-job-details.css" />
     <Content Include="Content\portfolio-work.css" />
@@ -284,6 +289,7 @@
     <Content Include="Views\Education\EducationDetails.cshtml" />
     <Content Include="Views\Hobbies\Hobbies.cshtml" />
     <Content Include="Views\Projects\Projects.cshtml" />
+    <Content Include="Views\Hobbies\HobbyDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

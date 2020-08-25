@@ -1,1 +1,24 @@
-﻿<h2>The page is under construction...</h2>
+﻿@model AlexPortfolio.Models.HobbiesViewModel
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/portfolio-hobbies.css")" rel="stylesheet" type="text/css" />
+}
+
+@section AddToFooter{
+    <script src="@Url.Content("~/Scripts/portfolio-hobbies.js")"></script>
+}
+
+<div class="d-flex flex-wrap justify-content-center">
+    @foreach (var item in Model.Hobbies)
+    {
+        <div class="p-2">
+            <div class="card mx-auto">
+                <div class="card-img-top education-picture" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Picture))"></div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Titile</h5>
+                    <a href="@Url.Action("HobbyDetails", "Hobbies", new { hobbyId = item.HobbyId})" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

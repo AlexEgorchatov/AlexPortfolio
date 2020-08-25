@@ -1,0 +1,47 @@
+﻿@model AlexPortfolio.Models.HobbyDetailsViewModel
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/portfolio-hobby-details.css")" rel="stylesheet" type="text/css" />
+}
+
+@*@section AddToFooter{
+        <script src="@Url.Content("~/Scripts/portfolio-job-details.js")"></script>
+    }*@
+
+<div>
+    <p><b>@Model.Title</b></p>
+    <p>@Model.Description</p>
+
+    <div class="row d-flex justify-content-center">
+        <div id="hobby-details-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Model.Pictures.Count; i++)
+                {
+                    <li data-target="#hobby-details-carousel" data-slide-to="@i" class="hobby-details-indicator@(i == 0 ? " active" : "")"></li>
+                }
+            </ol>
+
+            <div class="carousel-inner">
+                @foreach (var item in Model.Pictures)
+                {
+                    <div class="carousel-item @(Model.Pictures.First() == item ? "active" : "")">
+                        <div class="hobby-details-carousel-item" style="background-image: url(@Url.Content("../Content/Pictures/" + @item))"></div>
+                    </div>
+                }
+            </div>
+
+            @if (Model.Pictures.Any())
+            {
+                <a class="arrow carousel-control-prev" href="#hobby-details-carousel" role="button" data-slide="prev">
+                    <span id="hobby-details-image-prev" class="carousel-control-prev-icon hobby-details-arrow" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="arrow carousel-control-next" href="#hobby-details-carousel" role="button" data-slide="next">
+                    <span id="hobby-details-image-next" class="carousel-control-next-icon hobby-details-arrow" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            }
+
+        </div>
+    </div>
+</div>
