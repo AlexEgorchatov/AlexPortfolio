@@ -11,6 +11,12 @@
 <div id="hobby-details-body-container">
     <p><b>@Model.Title</b></p>
     <p>@Model.Description</p>
+    @if (Model.Title == "Coding")
+    {
+        <a href="https://www.hackerrank.com/alex_exorchatov" target="_blank">HackerRank Profile</a>
+        <br />
+        <br />
+    }
 
     <div class="row d-flex justify-content-center">
         <div id="hobby-details-carousel" class="carousel slide" data-ride="carousel" data-interval="false">

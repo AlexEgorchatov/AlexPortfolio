@@ -67,7 +67,8 @@ namespace AlexPortfolio.Controllers
                 "JavaScript",
                 "jQuery",
                 "Ajax",
-                "Bootstrap"
+                "Bootstrap",
+                "ReactJS",
             };
 
             List<string> other = new List<string>()
