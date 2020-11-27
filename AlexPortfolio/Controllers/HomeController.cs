@@ -89,7 +89,7 @@ namespace AlexPortfolio.Controllers
                 FacebookLink = "https://www.facebook.com/profile.php?id=100000820661738",
                 InstagramLink = "https://www.instagram.com/anotherfakesub/",
                 LinkedInLink = "https://www.linkedin.com/in/alex-roch-686b7718a/",
-                GitHubLink = "https://github.com/AnotherFakeSub/",
+                GitHubLink = "https://github.com/AlexEgorchatov",
                 DesktopSkills = desktop,
                 WebSkills = web,
                 OtherSkills = other,
