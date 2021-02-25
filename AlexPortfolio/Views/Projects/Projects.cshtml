@@ -1,2 +1,20 @@
-﻿<h2>The page is under construction...</h2>
+﻿@model AlexPortfolio.Models.ProjectsViewModel
 
+@section AddToHead{
+    <link href="@Url.Content("~/Content/portfolio-projects.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="d-flex flex-wrap justify-content-center">
+    @foreach (var item in Model.Projects)
+    {
+        <div class="p-2">
+            <div class="card mx-auto">
+                <div class="card-img-top projects-picture" style="background-image: url(@Url.Content("../Content/Pictures/" + @item.Picture))"></div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <a href="@Url.Action("ProjectDetails", "Projects", new { projectId = item.ProjectId})" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

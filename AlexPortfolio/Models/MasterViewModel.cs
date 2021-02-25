@@ -25,7 +25,7 @@ namespace AlexPortfolio.Models
                 new MenuItemViewModel(MenuType.About),
                 new MenuItemViewModel(MenuType.Work),
                 new MenuItemViewModel(MenuType.Education),
-                //new MenuItemViewModel(MenuType.Projects),
+                new MenuItemViewModel(MenuType.Projects),
                 new MenuItemViewModel(MenuType.Hobbies),
                 new MenuItemViewModel(MenuType.Contact),
             };

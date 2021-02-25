@@ -83,6 +83,12 @@
                     <a href="~/Hobbies/Hobbies" class="btn btn-secondary"><span class="fa fa-arrow-left" aria-hidden="true"></span>&nbsp; Back</a>
                 </div>
             }
+            @if ((ViewContext.RouteData.Values["action"]).ToString() == "ProjectDetails")
+            {
+                <div class="float-left">
+                    <a href="~/Projects/Projects" class="btn btn-secondary"><span class="fa fa-arrow-left" aria-hidden="true"></span>&nbsp; Back</a>
+                </div>
+            }
 
             @if ((ViewContext.RouteData.Values["action"]).ToString() == "Index" || (ViewContext.RouteData.Values["action"]).ToString() == "Contact")
             {
@@ -98,7 +104,7 @@
     </div>
 
     <nav class="container fixed-bottom navbar-dark bg-dark">
-        <p class="text-white text-center copyright">Copyright &copy; Alex Roch, @DateTime.Now.Year</p>
+        <p class="text-white text-center copyright">Copyright &copy; Alex Egorcharov, @DateTime.Now.Year</p>
     </nav>
 
     <div id="login-modal" class="modal fade auth-modal" tabindex="-1" role="dialog">

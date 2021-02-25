@@ -1,43 +1,12 @@
 ﻿using AlexPortfolio.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.WebPages;
 
 namespace AlexPortfolio.Controllers
 {
     public class WorkController : Controller
     {
-        [HttpGet]
-        public ActionResult Work()
-        {
-            var work = new WorkViewModel(MenuType.Work, Request.IsAuthenticated, HttpContext.User);
-
-            var job1 = new JobViewModel
-            {
-                JobId = 0,
-                Picture = "Work/Inuktun/inuktun-logo.png",
-                Company = "Eddyfi Technologies",
-                Position = "Software Designer"
-            };
-
-            var job2 = new JobViewModel
-            {
-                JobId = 1,
-                Picture = "Work/CrystalCam/crystalcam-logo.png",
-                Company = "Crystal Cam Imaging, Inc.",
-                Position = "Cooperative Education Student"
-            };
-
-            work.Jobs.Add(job1);
-            work.Jobs.Add(job2);
-
-            return View(work);
-        }
+        #region Public Methods
 
         [HttpGet]
         public ActionResult JobDetails(int jobId)
@@ -98,5 +67,34 @@ namespace AlexPortfolio.Controllers
                     return View(jobDetails);
             }
         }
+
+        [HttpGet]
+        public ActionResult Work()
+        {
+            var work = new WorkViewModel(MenuType.Work, Request.IsAuthenticated, HttpContext.User);
+
+            var job1 = new JobViewModel
+            {
+                JobId = 0,
+                Picture = "Work/Inuktun/inuktun-logo.png",
+                Company = "Eddyfi Technologies",
+                Position = "Software Designer"
+            };
+
+            var job2 = new JobViewModel
+            {
+                JobId = 1,
+                Picture = "Work/CrystalCam/crystalcam-logo.png",
+                Company = "Crystal Cam Imaging, Inc.",
+                Position = "Cooperative Education Student"
+            };
+
+            work.Jobs.Add(job1);
+            work.Jobs.Add(job2);
+
+            return View(work);
+        }
+
+        #endregion
     }
 }
